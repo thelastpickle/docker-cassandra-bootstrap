@@ -1,0 +1,911 @@
+{
+  "dashboard": {
+    "annotations": {
+      "list": []
+    },
+    "editable": true,
+    "gnetId": null,
+    "graphTooltip": 0,
+    "hideControls": false,
+    "id": null,
+    "links": [
+      {
+        "asDropdown": true,
+        "icon": "external link",
+        "includeVars": false,
+        "keepTime": true,
+        "tags": [
+          "tlp",
+          "cassandra"
+        ],
+        "title": "Other TLP Dashboards",
+        "type": "dashboards"
+      }
+    ],
+    "refresh": "5m",
+    "rows": [
+      {
+        "collapse": false,
+        "height": "150px",
+        "panels": [
+          {
+            "cacheTimeout": null,
+            "colorBackground": false,
+            "colorValue": false,
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "datasource": null,
+            "decimals": 0,
+            "format": "none",
+            "gauge": {
+              "maxValue": 100,
+              "minValue": 0,
+              "show": true,
+              "thresholdLabels": false,
+              "thresholdMarkers": true
+            },
+            "height": "200",
+            "hideTimeOverride": true,
+            "id": 24,
+            "interval": null,
+            "links": [],
+            "mappingType": 1,
+            "mappingTypes": [
+              {
+                "name": "value to text",
+                "value": 1
+              },
+              {
+                "name": "range to text",
+                "value": 2
+              }
+            ],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": "%",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "rangeMaps": [
+              {
+                "from": "null",
+                "text": "N/A",
+                "to": "null"
+              }
+            ],
+            "span": 4,
+            "sparkline": {
+              "fillColor": "rgba(31, 118, 189, 0.18)",
+              "full": false,
+              "lineColor": "rgb(31, 120, 193)",
+              "show": false
+            },
+            "tableColumn": "",
+            "targets": [
+              {
+                "expr": "sum(collectd_cpu_percent{environment=\"$env\", data_center=\"$dc\", cpu!=\"idle\"}) / sum(collectd_cpu_count{environment=\"$env\", data_center=\"$dc\"})",
+                "format": "time_series",
+                "legendFormat": "",
+                "refId": "A",
+                "target": "divideSeries(sumSeries(absolute(offset(collectd.$env.cassandra.$dc.$host.cpu.percent.idle, -100))), #B)",
+                "targetFull": "divideSeries(sumSeries(absolute(offset(collectd.$env.cassandra.$dc.$host.cpu.percent.idle, -100))), sumSeries(collectd.$env.cassandra.$dc.$host.cpu.count))",
+                "textEditor": false
+              },
+              {
+                "expr": "sum(collectd_cpu_count{environment=\"$env\", data_center=\"$dc\"})",
+                "format": "time_series",
+                "hide": true,
+                "legendFormat": "",
+                "refId": "B",
+                "target": "sumSeries(collectd.$env.cassandra.$dc.$host.cpu.count)",
+                "textEditor": false
+              }
+            ],
+            "thresholds": "",
+            "timeFrom": null,
+            "timeShift": "10s",
+            "title": "Cluster-Wide CPU Usage",
+            "transparent": true,
+            "type": "singlestat",
+            "valueFontSize": "80%",
+            "valueMaps": [
+              {
+                "op": "=",
+                "text": "N/A",
+                "value": "null"
+              }
+            ],
+            "valueName": "avg"
+          },
+          {
+            "cacheTimeout": null,
+            "colorBackground": false,
+            "colorValue": false,
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "datasource": null,
+            "decimals": 0,
+            "format": "none",
+            "gauge": {
+              "maxValue": 100,
+              "minValue": 0,
+              "show": true,
+              "thresholdLabels": false,
+              "thresholdMarkers": true
+            },
+            "height": "200",
+            "hideTimeOverride": true,
+            "id": 27,
+            "interval": null,
+            "links": [],
+            "mappingType": 1,
+            "mappingTypes": [
+              {
+                "name": "value to text",
+                "value": 1
+              },
+              {
+                "name": "range to text",
+                "value": 2
+              }
+            ],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": "%",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "rangeMaps": [
+              {
+                "from": "null",
+                "text": "N/A",
+                "to": "null"
+              }
+            ],
+            "span": 4,
+            "sparkline": {
+              "fillColor": "rgba(31, 118, 189, 0.18)",
+              "full": false,
+              "lineColor": "rgb(31, 120, 193)",
+              "show": false
+            },
+            "tableColumn": "",
+            "targets": [
+              {
+                "expr": "sum(collectd_memory{environment=\"$env\", data_center=\"$dc\", memory!=\"free\"}) / sum(collectd_memory{environment=\"$env\", data_center=\"$dc\"}) * 100",
+                "format": "time_series",
+                "legendFormat": "",
+                "refId": "A",
+                "target": "scale(divideSeries(sumSeries(collectd.$env.cassandra.$dc.$host.memory.memory.{buffered,cached,slab_recl,slab_unrecl,used}), #B), 100)",
+                "targetFull": "scale(divideSeries(sumSeries(collectd.$env.cassandra.$dc.$host.memory.memory.{buffered,cached,slab_recl,slab_unrecl,used}), sumSeries(collectd.$env.cassandra.$dc.$host.memory.memory.*)), 100)",
+                "textEditor": false
+              },
+              {
+                "expr": "sum(collectd_memory{environment=\"$env\", data_center=\"$dc\"})",
+                "format": "time_series",
+                "hide": true,
+                "legendFormat": "",
+                "refId": "B",
+                "target": "sumSeries(collectd.$env.cassandra.$dc.$host.memory.memory.*)",
+                "textEditor": false
+              }
+            ],
+            "thresholds": "",
+            "timeFrom": null,
+            "timeShift": "10s",
+            "title": "Cluster-Wide Memory Usage",
+            "transparent": true,
+            "type": "singlestat",
+            "valueFontSize": "80%",
+            "valueMaps": [
+              {
+                "op": "=",
+                "text": "N/A",
+                "value": "null"
+              }
+            ],
+            "valueName": "avg"
+          },
+          {
+            "cacheTimeout": null,
+            "colorBackground": false,
+            "colorValue": false,
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "datasource": null,
+            "decimals": 0,
+            "format": "none",
+            "gauge": {
+              "maxValue": 100,
+              "minValue": 0,
+              "show": true,
+              "thresholdLabels": false,
+              "thresholdMarkers": true
+            },
+            "height": "200",
+            "hideTimeOverride": true,
+            "id": 31,
+            "interval": null,
+            "links": [],
+            "mappingType": 1,
+            "mappingTypes": [
+              {
+                "name": "value to text",
+                "value": 1
+              },
+              {
+                "name": "range to text",
+                "value": 2
+              }
+            ],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": "%",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "rangeMaps": [
+              {
+                "from": "null",
+                "text": "N/A",
+                "to": "null"
+              }
+            ],
+            "span": 4,
+            "sparkline": {
+              "fillColor": "rgba(31, 118, 189, 0.18)",
+              "full": false,
+              "lineColor": "rgb(31, 120, 193)",
+              "show": false
+            },
+            "tableColumn": "",
+            "targets": [
+              {
+                "expr": "sum(collectd_df_df_complex{environment=\"$env\", data_center=\"$dc\", df=\"var-lib-cassandra\", type=\"used\"}) / sum(collectd_df_df_complex{environment=\"$env\", data_center=\"$dc\", df=\"var-lib-cassandra\"}) * 100",
+                "format": "time_series",
+                "legendFormat": "",
+                "refId": "A",
+                "target": "scale(divideSeries(sumSeries(collectd.$env.cassandra.$dc.$host.df.var-lib-cassandra.df_complex.used), #B), 100)",
+                "targetFull": "scale(divideSeries(sumSeries(collectd.$env.cassandra.$dc.$host.df.var-lib-cassandra.df_complex.used), sumSeries(collectd.$env.cassandra.$dc.$host.df.var-lib-cassandra.df_complex.*)), 100)",
+                "textEditor": false
+              },
+              {
+                "expr": "sum(collectd_df_df_complex{environment=\"$env\", data_center=\"$dc\", df=\"var-lib-cassandra\"})",
+                "format": "time_series",
+                "hide": true,
+                "legendFormat": "",
+                "refId": "B",
+                "target": "sumSeries(collectd.$env.cassandra.$dc.$host.df.var-lib-cassandra.df_complex.*)",
+                "textEditor": false
+              }
+            ],
+            "thresholds": "",
+            "timeShift": "30s",
+            "title": "Cluster-Wide Disk Usage",
+            "transparent": true,
+            "type": "singlestat",
+            "valueFontSize": "80%",
+            "valueMaps": [
+              {
+                "op": "=",
+                "text": "N/A",
+                "value": "null"
+              }
+            ],
+            "valueName": "avg"
+          },
+          {
+            "cacheTimeout": null,
+            "colorBackground": false,
+            "colorValue": false,
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "datasource": null,
+            "decimals": 1,
+            "format": "none",
+            "gauge": {
+              "maxValue": null,
+              "minValue": 0,
+              "show": false,
+              "thresholdLabels": false,
+              "thresholdMarkers": true
+            },
+            "hideTimeOverride": true,
+            "id": 23,
+            "interval": null,
+            "links": [],
+            "mappingType": 1,
+            "mappingTypes": [
+              {
+                "name": "value to text",
+                "value": 1
+              },
+              {
+                "name": "range to text",
+                "value": 2
+              }
+            ],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": " cores",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "rangeMaps": [
+              {
+                "from": "null",
+                "text": "N/A",
+                "to": "null"
+              }
+            ],
+            "span": 2,
+            "sparkline": {
+              "fillColor": "rgba(31, 118, 189, 0.18)",
+              "full": false,
+              "lineColor": "rgb(31, 120, 193)",
+              "show": true
+            },
+            "tableColumn": "",
+            "targets": [
+              {
+                "expr": "sum(collectd_cpu_percent{environment=\"$env\", data_center=\"$dc\", cpu!=\"idle\"}) * 0.01",
+                "format": "time_series",
+                "legendFormat": "",
+                "refId": "A",
+                "target": "scale(sumSeries(absolute(offset(collectd.$env.cassandra.$dc.$host.cpu.percent.idle, -100))), 0.01)",
+                "textEditor": false
+              }
+            ],
+            "thresholds": "",
+            "timeShift": "10s",
+            "title": "Cluster-Wide CPU Usage",
+            "transparent": true,
+            "type": "singlestat",
+            "valueFontSize": "80%",
+            "valueMaps": [
+              {
+                "op": "=",
+                "text": "N/A",
+                "value": "null"
+              }
+            ],
+            "valueName": "avg"
+          },
+          {
+            "cacheTimeout": null,
+            "colorBackground": false,
+            "colorValue": false,
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "datasource": null,
+            "decimals": 0,
+            "format": "none",
+            "gauge": {
+              "maxValue": 100,
+              "minValue": 0,
+              "show": false,
+              "thresholdLabels": false,
+              "thresholdMarkers": true
+            },
+            "id": 22,
+            "interval": null,
+            "links": [],
+            "mappingType": 1,
+            "mappingTypes": [
+              {
+                "name": "value to text",
+                "value": 1
+              },
+              {
+                "name": "range to text",
+                "value": 2
+              }
+            ],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": " cores",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "rangeMaps": [
+              {
+                "from": "null",
+                "text": "N/A",
+                "to": "null"
+              }
+            ],
+            "span": 2,
+            "sparkline": {
+              "fillColor": "rgba(31, 118, 189, 0.18)",
+              "full": false,
+              "lineColor": "rgb(31, 120, 193)",
+              "show": false
+            },
+            "tableColumn": "",
+            "targets": [
+              {
+                "expr": "sum(collectd_cpu_count{environment=\"$env\", data_center=\"$dc\"})",
+                "format": "time_series",
+                "legendFormat": "",
+                "refId": "A",
+                "target": "sumSeries(collectd.$env.cassandra.$dc.$host.cpu.count)",
+                "textEditor": false
+              }
+            ],
+            "thresholds": "",
+            "title": "Cluster-Wide CPU Allocation",
+            "transparent": true,
+            "type": "singlestat",
+            "valueFontSize": "80%",
+            "valueMaps": [
+              {
+                "op": "=",
+                "text": "N/A",
+                "value": "null"
+              }
+            ],
+            "valueName": "max"
+          },
+          {
+            "cacheTimeout": null,
+            "colorBackground": false,
+            "colorValue": false,
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "datasource": null,
+            "decimals": 1,
+            "format": "kbytes",
+            "gauge": {
+              "maxValue": null,
+              "minValue": 0,
+              "show": false,
+              "thresholdLabels": false,
+              "thresholdMarkers": true
+            },
+            "hideTimeOverride": true,
+            "id": 25,
+            "interval": null,
+            "links": [],
+            "mappingType": 1,
+            "mappingTypes": [
+              {
+                "name": "value to text",
+                "value": 1
+              },
+              {
+                "name": "range to text",
+                "value": 2
+              }
+            ],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": "",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "rangeMaps": [
+              {
+                "from": "null",
+                "text": "N/A",
+                "to": "null"
+              }
+            ],
+            "span": 2,
+            "sparkline": {
+              "fillColor": "rgba(31, 118, 189, 0.18)",
+              "full": false,
+              "lineColor": "rgb(31, 120, 193)",
+              "show": true
+            },
+            "tableColumn": "",
+            "targets": [
+              {
+                "expr": "sum(collectd_memory{environment=\"$env\", data_center=\"$dc\", memory!=\"free\"})",
+                "format": "time_series",
+                "legendFormat": "",
+                "refId": "A",
+                "target": "sumSeries(collectd.$env.cassandra.$dc.$host.memory.memory.{buffered,cached,slab_recl,slab_unrecl,used})",
+                "textEditor": false
+              }
+            ],
+            "thresholds": "",
+            "timeShift": "10s",
+            "title": "Cluster-Wide Memory Usage",
+            "transparent": true,
+            "type": "singlestat",
+            "valueFontSize": "80%",
+            "valueMaps": [
+              {
+                "op": "=",
+                "text": "N/A",
+                "value": "null"
+              }
+            ],
+            "valueName": "avg"
+          },
+          {
+            "cacheTimeout": null,
+            "colorBackground": false,
+            "colorValue": false,
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "datasource": null,
+            "decimals": 1,
+            "format": "kbytes",
+            "gauge": {
+              "maxValue": 100,
+              "minValue": 0,
+              "show": false,
+              "thresholdLabels": false,
+              "thresholdMarkers": true
+            },
+            "id": 26,
+            "interval": null,
+            "links": [],
+            "mappingType": 1,
+            "mappingTypes": [
+              {
+                "name": "value to text",
+                "value": 1
+              },
+              {
+                "name": "range to text",
+                "value": 2
+              }
+            ],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": "",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "rangeMaps": [
+              {
+                "from": "null",
+                "text": "N/A",
+                "to": "null"
+              }
+            ],
+            "span": 2,
+            "sparkline": {
+              "fillColor": "rgba(31, 118, 189, 0.18)",
+              "full": false,
+              "lineColor": "rgb(31, 120, 193)",
+              "show": false
+            },
+            "tableColumn": "",
+            "targets": [
+              {
+                "expr": "sum(collectd_memory{environment=\"$env\", data_center=\"$dc\"})",
+                "format": "time_series",
+                "legendFormat": "",
+                "refId": "A",
+                "target": "sumSeries(collectd.$env.cassandra.$dc.$host.memory.memory.*)",
+                "textEditor": false
+              }
+            ],
+            "thresholds": "",
+            "title": "Cluster-Wide Memory Allocation",
+            "transparent": true,
+            "type": "singlestat",
+            "valueFontSize": "80%",
+            "valueMaps": [
+              {
+                "op": "=",
+                "text": "N/A",
+                "value": "null"
+              }
+            ],
+            "valueName": "max"
+          },
+          {
+            "cacheTimeout": null,
+            "colorBackground": false,
+            "colorValue": false,
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "datasource": null,
+            "decimals": 1,
+            "format": "bytes",
+            "gauge": {
+              "maxValue": 100,
+              "minValue": 0,
+              "show": false,
+              "thresholdLabels": false,
+              "thresholdMarkers": true
+            },
+            "hideTimeOverride": true,
+            "id": 29,
+            "interval": null,
+            "links": [],
+            "mappingType": 1,
+            "mappingTypes": [
+              {
+                "name": "value to text",
+                "value": 1
+              },
+              {
+                "name": "range to text",
+                "value": 2
+              }
+            ],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": "",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "rangeMaps": [
+              {
+                "from": "null",
+                "text": "N/A",
+                "to": "null"
+              }
+            ],
+            "span": 2,
+            "sparkline": {
+              "fillColor": "rgba(31, 118, 189, 0.18)",
+              "full": false,
+              "lineColor": "rgb(31, 120, 193)",
+              "show": true
+            },
+            "tableColumn": "",
+            "targets": [
+              {
+                "expr": "sum(collectd_df_df_complex{environment=\"$env\", data_center=\"$dc\", df=\"var-lib-cassandra\", type=\"used\"})",
+                "format": "time_series",
+                "legendFormat": "",
+                "refId": "A",
+                "target": "sumSeries(collectd.$env.cassandra.$dc.$host.df.var-lib-cassandra.df_complex.used)",
+                "textEditor": false
+              }
+            ],
+            "thresholds": "",
+            "timeShift": "30s",
+            "title": "Cluster-Wide Disk Usage",
+            "transparent": true,
+            "type": "singlestat",
+            "valueFontSize": "80%",
+            "valueMaps": [
+              {
+                "op": "=",
+                "text": "N/A",
+                "value": "null"
+              }
+            ],
+            "valueName": "avg"
+          },
+          {
+            "cacheTimeout": null,
+            "colorBackground": false,
+            "colorValue": false,
+            "colors": [
+              "rgba(245, 54, 54, 0.9)",
+              "rgba(237, 129, 40, 0.89)",
+              "rgba(50, 172, 45, 0.97)"
+            ],
+            "datasource": null,
+            "decimals": 1,
+            "format": "bytes",
+            "gauge": {
+              "maxValue": 100,
+              "minValue": 0,
+              "show": false,
+              "thresholdLabels": false,
+              "thresholdMarkers": true
+            },
+            "id": 30,
+            "interval": null,
+            "links": [],
+            "mappingType": 1,
+            "mappingTypes": [
+              {
+                "name": "value to text",
+                "value": 1
+              },
+              {
+                "name": "range to text",
+                "value": 2
+              }
+            ],
+            "maxDataPoints": 100,
+            "nullPointMode": "connected",
+            "nullText": null,
+            "postfix": "",
+            "postfixFontSize": "50%",
+            "prefix": "",
+            "prefixFontSize": "50%",
+            "rangeMaps": [
+              {
+                "from": "null",
+                "text": "N/A",
+                "to": "null"
+              }
+            ],
+            "span": 2,
+            "sparkline": {
+              "fillColor": "rgba(31, 118, 189, 0.18)",
+              "full": false,
+              "lineColor": "rgb(31, 120, 193)",
+              "show": false
+            },
+            "tableColumn": "",
+            "targets": [
+              {
+                "expr": "sum(collectd_df_df_complex{environment=\"$env\", data_center=\"$dc\", df=\"var-lib-cassandra\"})",
+                "format": "time_series",
+                "legendFormat": "",
+                "refId": "A",
+                "target": "sumSeries(collectd.$env.cassandra.$dc.$host.df.var-lib-cassandra.df_complex.*)",
+                "textEditor": false
+              }
+            ],
+            "thresholds": "",
+            "title": "Cluster-Wide Disk Allocation",
+            "transparent": true,
+            "type": "singlestat",
+            "valueFontSize": "80%",
+            "valueMaps": [
+              {
+                "op": "=",
+                "text": "N/A",
+                "value": "null"
+              }
+            ],
+            "valueName": "max"
+          }
+        ],
+        "repeat": null,
+        "repeatIteration": null,
+        "repeatRowId": null,
+        "showTitle": true,
+        "title": "System-Level Metrics",
+        "titleSize": "h6"
+      }
+    ],
+    "schemaVersion": 14,
+    "style": "dark",
+    "tags": [
+      "tlp",
+      "cassandra"
+    ],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "text": "environment",
+          "value": "environment"
+        },
+        "datasource": "prometheus",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Environment",
+        "multi": false,
+        "name": "env",
+        "options": [],
+        "query": "label_values(org_apache_cassandra_metrics_Storage_Load, environment)",
+        "refresh": 2,
+        "regex": "",
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": true
+      },
+      {
+        "allValue": "",
+        "current": {
+          "text": "data_center",
+          "value": "data_center"
+        },
+        "datasource": "prometheus",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Data Center",
+        "multi": false,
+        "name": "dc",
+        "options": [],
+        "query": "label_values(org_apache_cassandra_metrics_Storage_Load, data_center)",
+        "refresh": 2,
+        "regex": "",
+        "sort": 1,
+        "tagValuesQuery": null,
+        "tags": [],
+        "tagsQuery": null,
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": "prometheus",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Host",
+        "multi": false,
+        "name": "host",
+        "options": [],
+        "query": "label_values(org_apache_cassandra_metrics_Storage_Load, host)",
+        "refresh": 2,
+        "regex": "",
+        "sort": 1,
+        "tagValuesQuery": null,
+        "tags": [],
+        "tagsQuery": null,
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+    "time": {
+      "from": "now-6h",
+      "to": "now"
+    },
+    "timepicker": {
+      "refresh_intervals": [
+        "5s",
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ],
+      "time_options": [
+        "5m",
+        "15m",
+        "1h",
+        "6h",
+        "12h",
+        "24h",
+        "2d",
+        "7d",
+        "30d"
+      ]
+    },
+    "timezone": "browser",
+    "title": "TLP - Cassandra - Big Picture",
+    "version": null
+  },
+  "overwrite": true
+}

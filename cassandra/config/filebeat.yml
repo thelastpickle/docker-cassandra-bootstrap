@@ -1,0 +1,23 @@
+output:
+  logstash:
+    enabled: true
+    hosts:
+      - logstash:5044
+filebeat:
+  prospectors:
+    - input_type: log
+      paths:
+        - "/var/log/cassandra/system.log*"
+      document_type: cassandra_system_logs
+      exclude_files: ['\.zip$']
+      multiline.pattern: '^TRACE|DEBUG|WARN|INFO|ERROR'
+      multiline.negate: true
+      multiline.match: after
+    - input_type: log
+      paths:
+        - "/var/log/cassandra/gc.log.*.current"
+      document_type: cassandra_gc_logs
+      exclude_files: ['\.zip$']
+      multiline.pattern: '^TRACE|DEBUG|WARN|INFO|ERROR'
+      multiline.negate: true
+      multiline.match: after

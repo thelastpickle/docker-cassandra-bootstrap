@@ -74,6 +74,7 @@ docker-compose up grafana
 # create 
 ./grafana/bin/create-data-sources.sh
 
+# user/pass: admin/admin
 open http://localhost:3000
 
 # upload dashboards

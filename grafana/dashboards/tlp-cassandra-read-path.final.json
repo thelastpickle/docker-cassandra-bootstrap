@@ -1,0 +1,3895 @@
+{
+  "dashboard": {
+    "annotations": {
+      "list": []
+    },
+    "editable": true,
+    "gnetId": null,
+    "graphTooltip": 1,
+    "hideControls": false,
+    "id": null,
+    "links": [
+      {
+        "asDropdown": true,
+        "icon": "external link",
+        "includeVars": false,
+        "keepTime": true,
+        "tags": [
+          "tlp",
+          "cassandra"
+        ],
+        "title": "Other TLP Dashboards",
+        "type": "dashboards"
+      }
+    ],
+    "refresh": "5m",
+    "rows": [
+      {
+        "collapse": false,
+        "height": "200px",
+        "panels": [
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "description": "This graph displays the 95th percentile read latency values.\n\n##### False Positives\n\nWhile 75th percentile latencies are a more accurate representations of a Cassandra cluster's health and performance, the 95th percentile metrics will provide early warning indicators for potential issues that may lead to degraded latencies.\n\nWhile the latencies in this graph may be occasionally higher than expected, this graph should normally stay below expected SLA values.\n\n##### Required Actions\n\nIf the `p95` read latency metrics spike, investigate:\n\n* Disk contention.\n* Frequent garbage collections.\n* Prolonged garbage collection times.\n* Inefficient read patterns.\n* Back pressure.",
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 1,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_ReadLatency{environment=\"$env\", data_center=\"$dc\", unit=\"95thPercentile\"}) by (keyspace, table)",
+                "format": "time_series",
+                "legendFormat": "{{keyspace}}.{{table}}.ReadLatency.p95",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.ReadLatency.95percentile, 2, 3), 1, 7, 8, 9)"
+              }
+            ],
+            "thresholds": [
+              {
+                "colorMode": "warning",
+                "fill": true,
+                "line": true,
+                "op": "gt",
+                "value": 10000
+              }
+            ],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Read Latency (per table) - p95",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "µs",
+                "label": "Mean read request latencies - p95",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "description": "This graph displays the 95th percentile read latency values.\n\n##### False Positives\n\nWhile 75th percentile latencies are a more accurate representations of a Cassandra cluster's health and performance, the 95th percentile metrics will provide early warning indicators for potential issues that may lead to degraded latencies.\n\nWhile the latencies in this graph may be occasionally higher than expected, this graph should normally stay below expected SLA values.\n\n##### Required Actions\n\nIf the `p95` read latency metrics spike, investigate:\n\n* Disk contention.\n* Frequent garbage collections.\n* Prolonged garbage collection times.\n* Inefficient read patterns.\n* Back pressure.",
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 3,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_ReadLatency{environment=\"$env\", data_center=\"$dc\", unit=\"95thPercentile\"}) by (environment, data_center, host)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.ReadLatency.p95",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.ReadLatency.95percentile, 9, 10), 1, 2, 3, 9)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Read Latency (per host) - p95",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "µs",
+                "label": "Mean read request latencies - p95",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "description": "This graph displays the 95th percentile read latency values.\n\n##### False Positives\n\nWhile 75th percentile latencies are a more accurate representations of a Cassandra cluster's health and performance, the 95th percentile metrics will provide early warning indicators for potential issues that may lead to degraded latencies.\n\nWhile the latencies in this graph may be occasionally higher than expected, this graph should normally stay below expected SLA values.\n\n##### Required Actions\n\nIf the `p95` read latency metrics spike, investigate:\n\n* Disk contention.\n* Frequent garbage collections.\n* Prolonged garbage collection times.\n* Inefficient read patterns.\n* Back pressure.",
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 5,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_ReadLatency{environment=\"$env\", data_center=\"$dc\", unit=\"95thPercentile\"}) by (environment, data_center, host, keyspace, table)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.{{keyspace}}.{{table}}.ReadLatency.p95",
+                "refId": "A",
+                "target": "aliasByNode(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.ReadLatency.95percentile, 2, 3, 9, 10)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Read Latency (per table and host) - p95",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "µs",
+                "label": "Read request latencies - p95",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "description": "This graph displays the frequency of read requests.\n\n##### Values\n\nThese metrics should relate closely with application requests that read from Cassandra.\n\n##### Required Actions\n\nIf the throughput for application requests that require data from Cassandra is much lower than Cassandra's read request throughputs, consider:\n\n* Denormalizing Cassandra tables based on application read patterns to prefer single table reads over multi-table read patterns.\n* Implement better in-line application caching.\n    * If requested data from Cassandra will be reused, opt for using an application variable instead of requesting the same data twice.\n    * However, we do not recommend introducing a caching datastore between Cassandra and the application.\n\nDo not attempt to use Batch CQL statements to solely reduce read requests counts.\n\nIf using Batch CQL statements, ensure that all queries in the Batch statement rely on a single partition key. If all Batch statements rely on a single partition key and using a consistency level of `ONE`, only one coordinator and one replica node is required to respond successfully.",
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 33,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_ReadLatency{environment=\"$env\", data_center=\"$dc\", unit=\"OneMinuteRate\"}) by (keyspace, table)",
+                "format": "time_series",
+                "legendFormat": "{{keyspace}}.{{table}}.ReadLatency.m1",
+                "refId": "A",
+                "target": "aliasByNode(sumSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.ReadLatency.1MinuteRate, 2, 3), 1, 7, 8, 10)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Read Request Counts (per table)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "opm",
+                "label": "Total read request rate",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "description": "This graph displays the frequency of read requests.\n\n##### Values\n\nThese metrics should relate closely with application requests that read from Cassandra.\n\n##### Required Actions\n\nIf the throughput for application requests that require data from Cassandra is much lower than Cassandra's read request throughputs, consider:\n\n* Denormalizing Cassandra tables based on application read patterns to prefer single table reads over multi-table read patterns.\n* Implement better in-line application caching.\n    * If requested data from Cassandra will be reused, opt for using an application variable instead of requesting the same data twice.\n    * However, we do not recommend introducing a caching datastore between Cassandra and the application.\n\nDo not attempt to use Batch CQL statements to solely reduce read requests counts.\n\nIf using Batch CQL statements, ensure that all queries in the Batch statement rely on a single partition key. If all Batch statements rely on a single partition key and using a consistency level of `ONE`, only one coordinator and one replica node is required to respond successfully.",
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 34,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_ReadLatency{environment=\"$env\", data_center=\"$dc\", unit=\"OneMinuteRate\"}) by (environment, data_center, host)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.ReadLatency.m1",
+                "refId": "A",
+                "target": "aliasByNode(sumSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.ReadLatency.1MinuteRate, 9, 10), 1, 2, 3, 10)",
+                "textEditor": false
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Read Request Counts (per host)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "opm",
+                "label": "Total read request rate",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "description": "This graph displays the frequency of read requests.\n\n##### Values\n\nThese metrics should relate closely with application requests that read from Cassandra.\n\n##### Required Actions\n\nIf the throughput for application requests that require data from Cassandra is much lower than Cassandra's read request throughputs, consider:\n\n* Denormalizing Cassandra tables based on application read patterns to prefer single table reads over multi-table read patterns.\n* Implement better in-line application caching.\n    * If requested data from Cassandra will be reused, opt for using an application variable instead of requesting the same data twice.\n    * However, we do not recommend introducing a caching datastore between Cassandra and the application.\n\nDo not attempt to use Batch CQL statements to solely reduce read requests counts.\n\nIf using Batch CQL statements, ensure that all queries in the Batch statement rely on a single partition key. If all Batch statements rely on a single partition key and using a consistency level of `ONE`, only one coordinator and one replica node is required to respond successfully.",
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 35,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_ReadLatency{environment=\"$env\", data_center=\"$dc\", unit=\"OneMinuteRate\"}) by (environment, data_center, host, keyspace, table)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.{{keyspace}}.{{table}}.ReadLatency.m1",
+                "refId": "A",
+                "target": "aliasByNode(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.ReadLatency.1MinuteRate, 2, 3, 9, 10)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Read Request Counts (per table and host)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "opm",
+                "label": "Read request rate",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          }
+        ],
+        "repeat": null,
+        "repeatIteration": null,
+        "repeatRowId": null,
+        "showTitle": true,
+        "title": "Read Request Latencies and Counts",
+        "titleSize": "h6"
+      },
+      {
+        "collapse": false,
+        "height": "200px",
+        "panels": [
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "description": "This graph displays the 95th percentile range request latency values.\n\n##### False Positives\n\nWhile 75th percentile latencies are a more accurate representations of a Cassandra cluster's health and performance, the 95th percentile metrics will provide early warning indicators for potential issues that may lead to degraded latencies.\n\nWhile the latencies in this graph may be occasionally higher than expected, this graph should normally stay below expected SLA values.\n\n##### Required Actions\n\nIf the `p95` read latency metrics spike, investigate:\n\n* Disk contention.\n* Frequent garbage collections.\n* Prolonged garbage collection times.\n* Inefficient read patterns.\n* Back pressure.\n* Non-ideal compaction strategies.\n* Ultra-wide partitions.",
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 30,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_RangeLatency{environment=\"$env\", data_center=\"$dc\", unit=\"95thPercentile\"}) by (keyspace, table)",
+                "format": "time_series",
+                "legendFormat": "{{keyspace}}.{{table}}.RangeLatency.p95",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.RangeLatency.95percentile, 2, 3), 1, 7, 8, 9)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Range Request Latency (per table) - p95",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "µs",
+                "label": "Mean range request latencies - p95",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "description": "This graph displays the 95th percentile range request latency values.\n\n##### False Positives\n\nWhile 75th percentile latencies are a more accurate representations of a Cassandra cluster's health and performance, the 95th percentile metrics will provide early warning indicators for potential issues that may lead to degraded latencies.\n\nWhile the latencies in this graph may be occasionally higher than expected, this graph should normally stay below expected SLA values.\n\n##### Required Actions\n\nIf the `p95` read latency metrics spike, investigate:\n\n* Disk contention.\n* Frequent garbage collections.\n* Prolonged garbage collection times.\n* Inefficient read patterns.\n* Back pressure.\n* Non-ideal compaction strategies.\n* Ultra-wide partitions.",
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 31,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_RangeLatency{environment=\"$env\", data_center=\"$dc\", unit=\"95thPercentile\"}) by (environment, data_center, host)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.RangeLatency.p95",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.RangeLatency.95percentile, 9, 10), 1, 2, 3, 9)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Range Request Latency (per host) - p95",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "µs",
+                "label": "Mean range request latencies - p95",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "description": "This graph displays the 95th percentile range request latency values.\n\n##### False Positives\n\nWhile 75th percentile latencies are a more accurate representations of a Cassandra cluster's health and performance, the 95th percentile metrics will provide early warning indicators for potential issues that may lead to degraded latencies.\n\nWhile the latencies in this graph may be occasionally higher than expected, this graph should normally stay below expected SLA values.\n\n##### Required Actions\n\nIf the `p95` read latency metrics spike, investigate:\n\n* Disk contention.\n* Frequent garbage collections.\n* Prolonged garbage collection times.\n* Inefficient read patterns.\n* Back pressure.\n* Non-ideal compaction strategies.\n* Ultra-wide partitions.",
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 32,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_RangeLatency{environment=\"$env\", data_center=\"$dc\", unit=\"95thPercentile\"}) by (environment, data_center, host, keyspace, table)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.{{keyspace}}.{{table}}.RangeLatency.p95",
+                "refId": "A",
+                "target": "aliasByNode(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.RangeLatency.95percentile, 2, 3, 9, 10)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Range Request Latency (per table and host) - p95",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "µs",
+                "label": "Range request latencies - p95",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "description": "This graph displays the frequency of range read requests.\n\nRange read requests are requests that:\n\n* Use a single CQL statement.\n* Use a single partition key.\n* Perform a range scan over multiple clustering keys that share the partition key.\n\n##### Values\n\nHaving a high throughput of range read requests, should typically indicate that data has been properly denormalized. If properly denormalized, data requests should be simpler and more performant when requesting related data.\n\nDo, however, ensure that range scans are not being requested and filtered out on the client-side in cases where a simple CQL query for a specific partition may have:\n\n* Been more performant.\n* Required less on-disk data access.\n* Required less server-side processing.\n* Required less network bandwidth usage.\n* Required no client-side filtering.",
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 36,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_RangeLatency{environment=\"$env\", data_center=\"$dc\", unit=\"OneMinuteRate\"}) by (keyspace, table)",
+                "format": "time_series",
+                "legendFormat": "{{keyspace}}.{{table}}.RangeLatency.m1",
+                "refId": "A",
+                "target": "aliasByNode(sumSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.RangeLatency.1MinuteRate, 2, 3), 1, 7, 8, 10)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Range Request Counts (per table)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "opm",
+                "label": "Total range request rate",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "description": "This graph displays the frequency of range read requests.\n\nRange read requests are requests that:\n\n* Use a single CQL statement.\n* Use a single partition key.\n* Perform a range scan over multiple clustering keys that share the partition key.\n\n##### Values\n\nHaving a high throughput of range read requests, should typically indicate that data has been properly denormalized. If properly denormalized, data requests should be simpler and more performant when requesting related data.\n\nDo, however, ensure that range scans are not being requested and filtered out on the client-side in cases where a simple CQL query for a specific partition may have:\n\n* Been more performant.\n* Required less on-disk data access.\n* Required less server-side processing.\n* Required less network bandwidth usage.\n* Required no client-side filtering.",
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 37,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_RangeLatency{environment=\"$env\", data_center=\"$dc\", unit=\"OneMinuteRate\"}) by (environment, data_center, host)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.RangeLatency.m1",
+                "refId": "A",
+                "target": "aliasByNode(sumSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.RangeLatency.1MinuteRate, 9, 10), 1, 2, 3, 10)",
+                "textEditor": false
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Range Request Counts (per host)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "opm",
+                "label": "Total range request rate",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "description": "This graph displays the frequency of range read requests.\n\nRange read requests are requests that:\n\n* Use a single CQL statement.\n* Use a single partition key.\n* Perform a range scan over multiple clustering keys that share the partition key.\n\n##### Values\n\nHaving a high throughput of range read requests, should typically indicate that data has been properly denormalized. If properly denormalized, data requests should be simpler and more performant when requesting related data.\n\nDo, however, ensure that range scans are not being requested and filtered out on the client-side in cases where a simple CQL query for a specific partition may have:\n\n* Been more performant.\n* Required less on-disk data access.\n* Required less server-side processing.\n* Required less network bandwidth usage.\n* Required no client-side filtering.",
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 38,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_RangeLatency{environment=\"$env\", data_center=\"$dc\", unit=\"OneMinuteRate\"}) by (environment, data_center, host, keyspace, table)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.{{keyspace}}.{{table}}.RangeLatency.m1",
+                "refId": "A",
+                "target": "aliasByNode(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.RangeLatency.1MinuteRate, 2, 3, 9, 10)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Range Request Counts (per table and host)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "opm",
+                "label": "Range request rate",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          }
+        ],
+        "repeat": null,
+        "repeatIteration": null,
+        "repeatRowId": null,
+        "showTitle": true,
+        "title": "Range Request Latencies and Counts",
+        "titleSize": "h6"
+      },
+      {
+        "collapse": false,
+        "height": "200px",
+        "panels": [
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "description": "This graph displays the 95th percentile for the number of scanned tombstones per request.\n\n##### False Positives\n\nWhile 75th percentile metrics are a more accurate representations of a Cassandra cluster's health and performance, the 95th percentile metrics will provide early warning indicators for potential issues that may lead to degraded scan performance.\n\nWhile the number of tombstones scanned in this graph may be occasionally higher than expected, this graph should normally stay below expected scanned tombstone values.\n\n##### Required Actions\n\nIf the `p95` scanned tombstone metrics spike, investigate:\n\n* Non-ideal compaction strategies.\n    * The `LeveledCompactionStrategy` should never be used on tables that ingest deletions due to the way tombstones will spread across levels and hinder the compaction process.\n    * The `TimeWindowCompactionStrategy` is available for tables that do not ingest deletions, but instead utilize an expiring/TTL workload.\n    * If neither of the above compaction strategies fit the intended workload, use the `SizeTieredCompactionStrategy`.\n* Data deletion patterns.\n    * If required to use the `SizeTieredCompactionStrategy` in order to support deletion workloads, consider an alternative data model that would allow for a TTL-based workload that is compatible with the `LeveledCompactionStrategy`.\n    * If using the `LeveledCompactionStrategy` with a TTL-based workload, entire SSTables will be removed soon after the data within the SSTable has expired, thus decreasing the number of scanned tombstones.",
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 27,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_TombstoneScannedHistogram{environment=\"$env\", data_center=\"$dc\", unit=\"95thPercentile\"}) by (keyspace, table)",
+                "format": "time_series",
+                "legendFormat": "{{keyspace}}.{{table}}.TombstoneScanned.p95",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.TombstoneScannedHistogram.95percentile, 2, 3), 1, 7, 8, 9)"
+              }
+            ],
+            "thresholds": [
+              {
+                "colorMode": "warning",
+                "fill": true,
+                "line": true,
+                "op": "gt",
+                "value": 1000
+              },
+              {
+                "colorMode": "critical",
+                "fill": true,
+                "line": true,
+                "op": "gt",
+                "value": 100000
+              }
+            ],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Tombstones Scanned (per table) - p95",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "short",
+                "label": "Mean tombstones scanned of p95",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "description": "This graph displays the 95th percentile for the number of scanned tombstones per request.\n\n##### False Positives\n\nWhile 75th percentile metrics are a more accurate representations of a Cassandra cluster's health and performance, the 95th percentile metrics will provide early warning indicators for potential issues that may lead to degraded scan performance.\n\nWhile the number of tombstones scanned in this graph may be occasionally higher than expected, this graph should normally stay below expected scanned tombstone values.\n\n##### Required Actions\n\nIf the `p95` scanned tombstone metrics spike, investigate:\n\n* Non-ideal compaction strategies.\n    * The `LeveledCompactionStrategy` should never be used on tables that ingest deletions due to the way tombstones will spread across levels and hinder the compaction process.\n    * The `TimeWindowCompactionStrategy` is available for tables that do not ingest deletions, but instead utilize an expiring/TTL workload.\n    * If neither of the above compaction strategies fit the intended workload, use the `SizeTieredCompactionStrategy`.\n* Data deletion patterns.\n    * If required to use the `SizeTieredCompactionStrategy` in order to support deletion workloads, consider an alternative data model that would allow for a TTL-based workload that is compatible with the `LeveledCompactionStrategy`.\n    * If using the `LeveledCompactionStrategy` with a TTL-based workload, entire SSTables will be removed soon after the data within the SSTable has expired, thus decreasing the number of scanned tombstones.",
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 9,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_TombstoneScannedHistogram{environment=\"$env\", data_center=\"$dc\", unit=\"95thPercentile\"}) by (environment, data_center, host)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.TombstoneScanned.p95",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.TombstoneScannedHistogram.95percentile, 9, 10), 1, 2, 3, 9)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Tombstones Scanned (per host) - p95",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "short",
+                "label": "Mean tombstones scanned of p95",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "description": "This graph displays the 95th percentile for the number of scanned tombstones per request.\n\n##### False Positives\n\nWhile 75th percentile metrics are a more accurate representations of a Cassandra cluster's health and performance, the 95th percentile metrics will provide early warning indicators for potential issues that may lead to degraded scan performance.\n\nWhile the number of tombstones scanned in this graph may be occasionally higher than expected, this graph should normally stay below expected scanned tombstone values.\n\n##### Required Actions\n\nIf the `p95` scanned tombstone metrics spike, investigate:\n\n* Non-ideal compaction strategies.\n    * The `LeveledCompactionStrategy` should never be used on tables that ingest deletions due to the way tombstones will spread across levels and hinder the compaction process.\n    * The `TimeWindowCompactionStrategy` is available for tables that do not ingest deletions, but instead utilize an expiring/TTL workload.\n    * If neither of the above compaction strategies fit the intended workload, use the `SizeTieredCompactionStrategy`.\n* Data deletion patterns.\n    * If required to use the `SizeTieredCompactionStrategy` in order to support deletion workloads, consider an alternative data model that would allow for a TTL-based workload that is compatible with the `LeveledCompactionStrategy`.\n    * If using the `LeveledCompactionStrategy` with a TTL-based workload, entire SSTables will be removed soon after the data within the SSTable has expired, thus decreasing the number of scanned tombstones.",
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 10,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_TombstoneScannedHistogram{environment=\"$env\", data_center=\"$dc\", unit=\"95thPercentile\"}) by (environment, data_center, host, keyspace, table)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.{{keyspace}}.{{table}}.TombstoneScanned.p95",
+                "refId": "A",
+                "target": "aliasByNode(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.TombstoneScannedHistogram.95percentile, 2, 3, 9, 10)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Tombstones Scanned (per table and host) - p95",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "short",
+                "label": "Tombstones scanned - p95",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "alert": {
+              "conditions": [
+                {
+                  "evaluator": {
+                    "params": [
+                      100000
+                    ],
+                    "type": "gt"
+                  },
+                  "operator": {
+                    "type": "and"
+                  },
+                  "query": {
+                    "params": [
+                      "A",
+                      "5m",
+                      "now"
+                    ]
+                  },
+                  "reducer": {
+                    "params": [],
+                    "type": "avg"
+                  },
+                  "type": "query"
+                }
+              ],
+              "executionErrorState": "alerting",
+              "frequency": "60s",
+              "handler": 1,
+              "name": "Tombstones Scanned (per table) - Max alert",
+              "noDataState": "no_data",
+              "notifications": [
+                {
+                  "id": 0
+                }
+              ]
+            },
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "description": "This graph displays the max number of scanned tombstones per request.\n\n##### False Positives\n\nWhile 75th percentile metrics are a more accurate representations of a Cassandra cluster's health and performance, the max metrics will provide early warning indicators for potential issues that may lead to degraded scan performance.\n\nWhile the number of tombstones scanned in this graph may be occasionally higher than expected, this graph should normally stay below expected scanned tombstone values.\n\n##### Required Actions\n\nIf the `max` scanned tombstone metrics spike, investigate:\n\n* Non-ideal compaction strategies.\n    * The `LeveledCompactionStrategy` should never be used on tables that ingest deletions due to the way tombstones will spread across levels and hinder the compaction process.\n    * The `TimeWindowCompactionStrategy` is available for tables that do not ingest deletions, but instead utilize an expiring/TTL workload.\n    * If neither of the above compaction strategies fit the intended workload, use the `SizeTieredCompactionStrategy`.\n* Data deletion patterns.\n    * If required to use the `SizeTieredCompactionStrategy` in order to support deletion workloads, consider an alternative data model that would allow for a TTL-based workload that is compatible with the `LeveledCompactionStrategy`.\n    * If using the `LeveledCompactionStrategy` with a TTL-based workload, entire SSTables will be removed soon after the data within the SSTable has expired, thus decreasing the number of scanned tombstones.",
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 6,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "max(org_apache_cassandra_metrics_Table_TombstoneScannedHistogram{environment=\"$env\", data_center=\"$dc\", unit=\"Max\"}) by (keyspace, table)",
+                "format": "time_series",
+                "legendFormat": "{{keyspace}}.{{table}}.TombstoneScanned.max",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.TombstoneScannedHistogram.max, 2, 3), 1, 7, 8, 9)"
+              }
+            ],
+            "thresholds": [
+              {
+                "colorMode": "critical",
+                "fill": true,
+                "line": true,
+                "op": "gt",
+                "value": 100000
+              }
+            ],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Tombstones Scanned (per table) - Max",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "short",
+                "label": "Mean tombstones scanned of max",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "description": "This graph displays the max number of scanned tombstones per request.\n\n##### False Positives\n\nWhile 75th percentile metrics are a more accurate representations of a Cassandra cluster's health and performance, the max metrics will provide early warning indicators for potential issues that may lead to degraded scan performance.\n\nWhile the number of tombstones scanned in this graph may be occasionally higher than expected, this graph should normally stay below expected scanned tombstone values.\n\n##### Required Actions\n\nIf the `max` scanned tombstone metrics spike, investigate:\n\n* Non-ideal compaction strategies.\n    * The `LeveledCompactionStrategy` should never be used on tables that ingest deletions due to the way tombstones will spread across levels and hinder the compaction process.\n    * The `TimeWindowCompactionStrategy` is available for tables that do not ingest deletions, but instead utilize an expiring/TTL workload.\n    * If neither of the above compaction strategies fit the intended workload, use the `SizeTieredCompactionStrategy`.\n* Data deletion patterns.\n    * If required to use the `SizeTieredCompactionStrategy` in order to support deletion workloads, consider an alternative data model that would allow for a TTL-based workload that is compatible with the `LeveledCompactionStrategy`.\n    * If using the `LeveledCompactionStrategy` with a TTL-based workload, entire SSTables will be removed soon after the data within the SSTable has expired, thus decreasing the number of scanned tombstones.",
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 28,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "max(org_apache_cassandra_metrics_Table_TombstoneScannedHistogram{environment=\"$env\", data_center=\"$dc\", unit=\"Max\"}) by (environment, data_center, host)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.TombstoneScanned.max",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.TombstoneScannedHistogram.max, 9, 10), 1, 2, 3, 9)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Tombstones Scanned (per host) - Max",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "short",
+                "label": "Mean tombstones scanned of max",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "description": "This graph displays the max number of scanned tombstones per request.\n\n##### False Positives\n\nWhile 75th percentile metrics are a more accurate representations of a Cassandra cluster's health and performance, the max metrics will provide early warning indicators for potential issues that may lead to degraded scan performance.\n\nWhile the number of tombstones scanned in this graph may be occasionally higher than expected, this graph should normally stay below expected scanned tombstone values.\n\n##### Required Actions\n\nIf the `max` scanned tombstone metrics spike, investigate:\n\n* Non-ideal compaction strategies.\n    * The `LeveledCompactionStrategy` should never be used on tables that ingest deletions due to the way tombstones will spread across levels and hinder the compaction process.\n    * The `TimeWindowCompactionStrategy` is available for tables that do not ingest deletions, but instead utilize an expiring/TTL workload.\n    * If neither of the above compaction strategies fit the intended workload, use the `SizeTieredCompactionStrategy`.\n* Data deletion patterns.\n    * If required to use the `SizeTieredCompactionStrategy` in order to support deletion workloads, consider an alternative data model that would allow for a TTL-based workload that is compatible with the `LeveledCompactionStrategy`.\n    * If using the `LeveledCompactionStrategy` with a TTL-based workload, entire SSTables will be removed soon after the data within the SSTable has expired, thus decreasing the number of scanned tombstones.",
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 29,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "max(org_apache_cassandra_metrics_Table_TombstoneScannedHistogram{environment=\"$env\", data_center=\"$dc\", unit=\"Max\"}) by (environment, data_center, host, keyspace, table)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.{{keyspace}}.{{table}}.TombstoneScanned.max",
+                "refId": "A",
+                "target": "aliasByNode(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.TombstoneScannedHistogram.max, 2, 3, 9, 10)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Tombstones Scanned (per table and host) - Max",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "short",
+                "label": "Tombstones scanned - max",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          }
+        ],
+        "repeat": null,
+        "repeatIteration": null,
+        "repeatRowId": null,
+        "showTitle": true,
+        "title": "Tombstones",
+        "titleSize": "h6"
+      },
+      {
+        "collapse": false,
+        "height": "200px",
+        "panels": [
+          {
+            "alert": {
+              "conditions": [
+                {
+                  "evaluator": {
+                    "params": [
+                      5
+                    ],
+                    "type": "gt"
+                  },
+                  "operator": {
+                    "type": "and"
+                  },
+                  "query": {
+                    "params": [
+                      "A",
+                      "5m",
+                      "now"
+                    ]
+                  },
+                  "reducer": {
+                    "params": [],
+                    "type": "avg"
+                  },
+                  "type": "query"
+                }
+              ],
+              "executionErrorState": "alerting",
+              "frequency": "60s",
+              "handler": 1,
+              "name": "SSTables Per Read (per table) - 95p alert",
+              "noDataState": "no_data",
+              "notifications": [
+                {
+                  "id": 0
+                }
+              ]
+            },
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "decimals": 0,
+            "description": "This graph displays the number of SSTables that the 95th percentile of reads have to inspect per request.\n\n##### Required Actions\n\nIf the `p95` metrics spike, investigate:\n\n* Non-ideal compaction strategies.\n    * The `LeveledCompactionStrategy` is designed to ensure that a partition key will only ever exist in one row above Level 0. This restricts the number of SSTables to be read to be close to the number of Levels that exist, plus any new mutations that are located within Level 0.\n    * Do note that the `LeveledCompactionStrategy` is not ideal for workloads that ingest deletions since the tombstones will negatively affect Cassandra's ability to remove deleted data from disk.\n* Ultra-wide partitions.\n    * If the data model includes many clustering keys and not able to use the `LeveledCompactionStrategy`, consider defining more clustering keys per read request, especially if the data is being filtered on the application-side.\n    * Restricting the scope of the requested data columns may also improve performance. If a specific field is only ever written to a row upon first-write, and a `SELECT *` is requested, all data columns must be returned, or all SSTables must be read, depending on whichever happens first.\n* Use the [`LIMIT`](http://thelastpickle.com/blog/2017/03/07/The-limit-clause-in-cassandra-might-not-work-as-you-think.html) clause with a range clause until running Cassandra 3.4+ which includes [CASSANDRA-8180](https://issues.apache.org/jira/browse/CASSANDRA-8180).\n    * Due to the issue that CASSANDRA-8180 resolves, `LIMIT` queries used to read all data across the partition to ensure that all new data has been read (since new and old data can become intertwined within any given SSTable).\n    * Once the partition was constructed, the coordinator would limit the number of rows to be returned.\n    * Post-CASSANDRA-8180, Cassandra uses the min/max values of the clustering keys in the index, orders SSTables accordingly, and processes them one at a time until it reaches the required number of rows.",
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 11,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 3,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_SSTablesPerReadHistogram{environment=\"$env\", data_center=\"$dc\", unit=\"95thPercentile\"}) by (keyspace, table)",
+                "format": "time_series",
+                "legendFormat": "{{keyspace}}.{{table}}.SSTablesPerRead.p95",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.SSTablesPerReadHistogram.95percentile, 2, 3), 1, 7, 8, 9)"
+              }
+            ],
+            "thresholds": [
+              {
+                "colorMode": "critical",
+                "fill": true,
+                "line": true,
+                "op": "gt",
+                "value": 5
+              }
+            ],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "SSTables Per Read (per table) - 95p",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "short",
+                "label": "SSTable read depth",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "description": "This graph displays the number of SSTables that the 95th percentile of reads have to inspect per request.\n\n##### Required Actions\n\nIf the `p95` metrics spike, investigate:\n\n* Non-ideal compaction strategies.\n    * The `LeveledCompactionStrategy` is designed to ensure that a partition key will only ever exist in one row above Level 0. This restricts the number of SSTables to be read to be close to the number of Levels that exist, plus any new mutations that are located within Level 0.\n    * Do note that the `LeveledCompactionStrategy` is not ideal for workloads that ingest deletions since the tombstones will negatively affect Cassandra's ability to remove deleted data from disk.\n* Ultra-wide partitions.\n    * If the data model includes many clustering keys and not able to use the `LeveledCompactionStrategy`, consider defining more clustering keys per read request, especially if the data is being filtered on the application-side.\n    * Restricting the scope of the requested data columns may also improve performance. If a specific field is only ever written to a row upon first-write, and a `SELECT *` is requested, all data columns must be returned, or all SSTables must be read, depending on whichever happens first.\n* Use the [`LIMIT`](http://thelastpickle.com/blog/2017/03/07/The-limit-clause-in-cassandra-might-not-work-as-you-think.html) clause with a range clause until running Cassandra 3.4+ which includes [CASSANDRA-8180](https://issues.apache.org/jira/browse/CASSANDRA-8180).\n    * Due to the issue that CASSANDRA-8180 resolves, `LIMIT` queries used to read all data across the partition to ensure that all new data has been read (since new and old data can become intertwined within any given SSTable).\n    * Once the partition was constructed, the coordinator would limit the number of rows to be returned.\n    * Post-CASSANDRA-8180, Cassandra uses the min/max values of the clustering keys in the index, orders SSTables accordingly, and processes them one at a time until it reaches the required number of rows.",
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 12,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 3,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_SSTablesPerReadHistogram{environment=\"$env\", data_center=\"$dc\", unit=\"95thPercentile\"}) by (environment, data_center, host)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.SSTablesPerRead.p95",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.SSTablesPerReadHistogram.95percentile, 9, 10), 1, 2, 3, 9)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "SSTables Per Read (per host) - 95p",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "short",
+                "label": "SSTable read depth",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "description": "This graph displays the number of SSTables that the 95th percentile of reads have to inspect per request.\n\n##### Required Actions\n\nIf the `p95` metrics spike, investigate:\n\n* Non-ideal compaction strategies.\n    * The `LeveledCompactionStrategy` is designed to ensure that a partition key will only ever exist in one row above Level 0. This restricts the number of SSTables to be read to be close to the number of Levels that exist, plus any new mutations that are located within Level 0.\n    * Do note that the `LeveledCompactionStrategy` is not ideal for workloads that ingest deletions since the tombstones will negatively affect Cassandra's ability to remove deleted data from disk.\n* Ultra-wide partitions.\n    * If the data model includes many clustering keys and not able to use the `LeveledCompactionStrategy`, consider defining more clustering keys per read request, especially if the data is being filtered on the application-side.\n    * Restricting the scope of the requested data columns may also improve performance. If a specific field is only ever written to a row upon first-write, and a `SELECT *` is requested, all data columns must be returned, or all SSTables must be read, depending on whichever happens first.\n* Use the [`LIMIT`](http://thelastpickle.com/blog/2017/03/07/The-limit-clause-in-cassandra-might-not-work-as-you-think.html) clause with a range clause until running Cassandra 3.4+ which includes [CASSANDRA-8180](https://issues.apache.org/jira/browse/CASSANDRA-8180).\n    * Due to the issue that CASSANDRA-8180 resolves, `LIMIT` queries used to read all data across the partition to ensure that all new data has been read (since new and old data can become intertwined within any given SSTable).\n    * Once the partition was constructed, the coordinator would limit the number of rows to be returned.\n    * Post-CASSANDRA-8180, Cassandra uses the min/max values of the clustering keys in the index, orders SSTables accordingly, and processes them one at a time until it reaches the required number of rows.",
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 13,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 3,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_SSTablesPerReadHistogram{environment=\"$env\", data_center=\"$dc\", unit=\"95thPercentile\"}) by (environment, data_center, host, keyspace, table)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.{{keyspace}}.{{table}}.SSTablesPerRead.p95",
+                "refId": "A",
+                "target": "aliasByNode(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.SSTablesPerReadHistogram.95percentile, 2, 3, 9, 10)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "SSTables Per Read (per table and host) - 95p",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "short",
+                "label": "SSTable read depth",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "description": "This graph displays the number of SSTables that the max number of reads have to inspect per request.\n\n##### Required Actions\n\nIf the `max` metrics spike, investigate:\n\n* Non-ideal compaction strategies.\n    * The `LeveledCompactionStrategy` is designed to ensure that a partition key will only ever exist in one row above Level 0. This restricts the number of SSTables to be read to be close to the number of Levels that exist, plus any new mutations that are located within Level 0.\n    * Do note that the `LeveledCompactionStrategy` is not ideal for workloads that ingest deletions since the tombstones will negatively affect Cassandra's ability to remove deleted data from disk.\n* Ultra-wide partitions.\n    * If the data model includes many clustering keys and not able to use the `LeveledCompactionStrategy`, consider defining more clustering keys per read request, especially if the data is being filtered on the application-side.\n    * Restricting the scope of the requested data columns may also improve performance. If a specific field is only ever written to a row upon first-write, and a `SELECT *` is requested, all data columns must be returned, or all SSTables must be read, depending on whichever happens first.\n* Use the [`LIMIT`](http://thelastpickle.com/blog/2017/03/07/The-limit-clause-in-cassandra-might-not-work-as-you-think.html) clause with a range clause until running Cassandra 3.4+ which includes [CASSANDRA-8180](https://issues.apache.org/jira/browse/CASSANDRA-8180).\n    * Due to the issue that CASSANDRA-8180 resolves, `LIMIT` queries used to read all data across the partition to ensure that all new data has been read (since new and old data can become intertwined within any given SSTable).\n    * Once the partition was constructed, the coordinator would limit the number of rows to be returned.\n    * Post-CASSANDRA-8180, Cassandra uses the min/max values of the clustering keys in the index, orders SSTables accordingly, and processes them one at a time until it reaches the required number of rows.",
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 14,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 3,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "max(org_apache_cassandra_metrics_Table_SSTablesPerReadHistogram{environment=\"$env\", data_center=\"$dc\", unit=\"Max\"}) by (environment, data_center, host, keyspace, table)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.{{keyspace}}.{{table}}.SSTablesPerRead.max",
+                "refId": "A",
+                "target": "aliasByNode(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.SSTablesPerReadHistogram.max, 2, 3, 9, 10)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "SSTables Per Read (per table and host) - Max",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "short",
+                "label": "SSTable read depth",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          }
+        ],
+        "repeat": null,
+        "repeatIteration": null,
+        "repeatRowId": null,
+        "showTitle": true,
+        "title": "Read Depth",
+        "titleSize": "h6"
+      },
+      {
+        "collapse": false,
+        "height": "250px",
+        "panels": [
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "description": "This graph displays the `average` size of a partition.\n\n##### Values\n\nThe mean size of the row must be taken into account when calculating the amount of required heap space.\n\nWhile the maximum number of partition cells (CQL rows x CQL columns) is limited to 2 billion and a single column value is restricted to 2GB, the real-world limitation exists at around 100MB partitions.\n\nOnce partitions grow to more than 100MB:\n\n* Row caching can quickly be busted as a single row can consume all of the allocated row cache heap space.\n* Out of Memory exceptions may occur frequently as a single row may take over the majority of the heap space.\n* CPU and disk load may increase as multiple passes may be needed to load a row into memory.\n* Compactions may cause heap pressure as rows are read into memory before being written to the new SSTables.",
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 15,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_MeanRowSize{environment=\"$env\", data_center=\"$dc\"}) by (keyspace, table)",
+                "format": "time_series",
+                "legendFormat": "{{keyspace}}.{{table}}.MeanRowSize",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.MeanRowSize.value, 2, 3), 1, 7, 8, 9)",
+                "textEditor": false
+              }
+            ],
+            "thresholds": [
+              {
+                "colorMode": "warning",
+                "fill": true,
+                "line": true,
+                "op": "gt",
+                "value": 100000000
+              },
+              {
+                "colorMode": "critical",
+                "fill": true,
+                "line": true,
+                "op": "gt",
+                "value": 1000000000
+              }
+            ],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Mean Partition Size (per table)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "bytes",
+                "label": "Mean of partition size means",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "description": "This graph displays the `average` size of a partition.\n\n##### Values\n\nThe mean size of the row must be taken into account when calculating the amount of required heap space.\n\nWhile the maximum number of partition cells (CQL rows x CQL columns) is limited to 2 billion and a single column value is restricted to 2GB, the real-world limitation exists at around 100MB partitions.\n\nOnce partitions grow to more than 100MB:\n\n* Row caching can quickly be busted as a single row can consume all of the allocated row cache heap space.\n* Out of Memory exceptions may occur frequently as a single row may take over the majority of the heap space.\n* CPU and disk load may increase as multiple passes may be needed to load a row into memory.\n* Compactions may cause heap pressure as rows are read into memory before being written to the new SSTables.",
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 16,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_MeanRowSize{environment=\"$env\", data_center=\"$dc\"}) by (environment, data_center, host)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.MeanRowSize",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.MeanRowSize.value, 9, 10), 1, 2, 3, 9)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Mean Partition Size (per host)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "bytes",
+                "label": "Mean of partition size means",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "description": "This graph displays the `average` size of a partition.\n\n##### Values\n\nThe mean size of the row must be taken into account when calculating the amount of required heap space.\n\nWhile the maximum number of partition cells (CQL rows x CQL columns) is limited to 2 billion and a single column value is restricted to 2GB, the real-world limitation exists at around 100MB partitions.\n\nOnce partitions grow to more than 100MB:\n\n* Row caching can quickly be busted as a single row can consume all of the allocated row cache heap space.\n* Out of Memory exceptions may occur frequently as a single row may take over the majority of the heap space.\n* CPU and disk load may increase as multiple passes may be needed to load a row into memory.\n* Compactions may cause heap pressure as rows are read into memory before being written to the new SSTables.",
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 17,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_MeanRowSize{environment=\"$env\", data_center=\"$dc\"}) by (environment, data_center, host, keyspace, table)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.{{keyspace}}.{{table}}.MeanRowSize",
+                "refId": "A",
+                "target": "aliasByNode(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.MeanRowSize.value, 2, 3, 9, 10)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Mean Partition Size (per table and host)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "bytes",
+                "label": "Mean partition size",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "alert": {
+              "conditions": [
+                {
+                  "evaluator": {
+                    "params": [
+                      1000000000
+                    ],
+                    "type": "gt"
+                  },
+                  "operator": {
+                    "type": "and"
+                  },
+                  "query": {
+                    "params": [
+                      "A",
+                      "5m",
+                      "now"
+                    ]
+                  },
+                  "reducer": {
+                    "params": [],
+                    "type": "avg"
+                  },
+                  "type": "query"
+                }
+              ],
+              "executionErrorState": "alerting",
+              "frequency": "60s",
+              "handler": 1,
+              "name": "Max Partition Size (per table) alert",
+              "noDataState": "no_data",
+              "notifications": [
+                {
+                  "id": 0
+                }
+              ]
+            },
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "description": "This graph displays the `max` size of a partition.\n\n##### Values\n\nThe max size of the row must be taken into account when calculating the amount of required heap space.\n\nWhile the maximum number of partition cells (CQL rows x CQL columns) is limited to 2 billion and a single column value is restricted to 2GB, the real-world limitation exists at around 100MB partitions.\n\nOnce partitions grow to more than 100MB:\n\n* Row caching can quickly be busted as a single row can consume all of the allocated row cache heap space.\n* Out of Memory exceptions may occur frequently as a single row may take over the majority of the heap space.\n* CPU and disk load may increase as multiple passes may be needed to load a row into memory.\n* Compactions may cause heap pressure as rows are read into memory before being written to the new SSTables.",
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 18,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "max(org_apache_cassandra_metrics_Table_MaxRowSize{environment=\"$env\", data_center=\"$dc\"}) by (keyspace, table)",
+                "format": "time_series",
+                "legendFormat": "{{keyspace}}.{{table}}.MaxRowSize",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.MaxRowSize.value, 2, 3), 1, 7, 8, 9)",
+                "textEditor": false
+              }
+            ],
+            "thresholds": [
+              {
+                "colorMode": "critical",
+                "fill": true,
+                "line": true,
+                "op": "gt",
+                "value": 1000000000
+              }
+            ],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Max Partition Size (per table)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "bytes",
+                "label": "Mean max partition size",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "description": "This graph displays the `max` size of a partition.\n\n##### Values\n\nThe max size of the row must be taken into account when calculating the amount of required heap space.\n\nWhile the maximum number of partition cells (CQL rows x CQL columns) is limited to 2 billion and a single column value is restricted to 2GB, the real-world limitation exists at around 100MB partitions.\n\nOnce partitions grow to more than 100MB:\n\n* Row caching can quickly be busted as a single row can consume all of the allocated row cache heap space.\n* Out of Memory exceptions may occur frequently as a single row may take over the majority of the heap space.\n* CPU and disk load may increase as multiple passes may be needed to load a row into memory.\n* Compactions may cause heap pressure as rows are read into memory before being written to the new SSTables.",
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 19,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "max(org_apache_cassandra_metrics_Table_MaxRowSize{environment=\"$env\", data_center=\"$dc\"}) by (environment, data_center, host)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.MaxRowSize",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.MaxRowSize.value, 9, 10), 1, 2, 3, 9)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Max Partition Size (per host)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "bytes",
+                "label": "Mean max partition size",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "description": "This graph displays the `max` size of a partition.\n\n##### Values\n\nThe max size of the row must be taken into account when calculating the amount of required heap space.\n\nWhile the maximum number of partition cells (CQL rows x CQL columns) is limited to 2 billion and a single column value is restricted to 2GB, the real-world limitation exists at around 100MB partitions.\n\nOnce partitions grow to more than 100MB:\n\n* Row caching can quickly be busted as a single row can consume all of the allocated row cache heap space.\n* Out of Memory exceptions may occur frequently as a single row may take over the majority of the heap space.\n* CPU and disk load may increase as multiple passes may be needed to load a row into memory.\n* Compactions may cause heap pressure as rows are read into memory before being written to the new SSTables.",
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 20,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "max(org_apache_cassandra_metrics_Table_MaxRowSize{environment=\"$env\", data_center=\"$dc\"}) by (environment, data_center, host, keyspace, table)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.{{keyspace}}.{{table}}.MaxRowSize",
+                "refId": "A",
+                "target": "aliasByNode(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.MaxRowSize.value, 2, 3, 9, 10)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Max Partition Size (per table and host)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "bytes",
+                "label": "Max partition size",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          }
+        ],
+        "repeat": null,
+        "repeatIteration": null,
+        "repeatRowId": null,
+        "showTitle": true,
+        "title": "Wide Partitions",
+        "titleSize": "h6"
+      },
+      {
+        "collapse": false,
+        "height": "250px",
+        "panels": [
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "description": "This graph displays the rate at which the key cache returns a cached on-disk key location. Cassandra's key cache bypasses the OS page cache ideally decreasing, while not eliminating, disk seek times.\n\n##### Values\n\nIf the key cache hit rate is low, consider:\n\n* Increasing the number of cached keys within a table's schema.\n* Increasing the global cache settings within the `cassandra.yaml` file while keeping proper heap size tuning in mind.",
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 21,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_KeyCacheHitRate{environment=\"$env\", data_center=\"$dc\"}) by (keyspace, table)",
+                "format": "time_series",
+                "legendFormat": "{{keyspace}}.{{table}}.KeyCacheHitRate",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.KeyCacheHitRate.value, 2, 3), 1, 7, 8, 9)",
+                "textEditor": false
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Key Cache Hit Rate (per table)",
+            "tooltip": {
+              "msResolution": true,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "percentunit",
+                "label": "Mean key cache hit rate",
+                "logBase": 1,
+                "max": "1",
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "description": "This graph displays the rate at which the key cache returns a cached on-disk key location. Cassandra's key cache bypasses the OS page cache ideally decreasing, while not eliminating, disk seek times.\n\n##### Values\n\nIf the key cache hit rate is low, consider:\n\n* Increasing the number of cached keys within a table's schema.\n* Increasing the global cache settings within the `cassandra.yaml` file while keeping proper heap size tuning in mind.",
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 22,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_KeyCacheHitRate{environment=\"$env\", data_center=\"$dc\"}) by (environment, data_center, host)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.KeyCacheHitRate",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.KeyCacheHitRate.value, 9, 10), 1, 2, 3, 9)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Key Cache Hit Rate (per host)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "percentunit",
+                "label": "Mean key cache hit rate",
+                "logBase": 1,
+                "max": "1",
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "description": "This graph displays the rate at which the key cache returns a cached on-disk key location. Cassandra's key cache bypasses the OS page cache ideally decreasing, while not eliminating, disk seek times.\n\n##### Values\n\nIf the key cache hit rate is low, consider:\n\n* Increasing the number of cached keys within a table's schema.\n* Increasing the global cache settings within the `cassandra.yaml` file while keeping proper heap size tuning in mind.",
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 23,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_KeyCacheHitRate{environment=\"$env\", data_center=\"$dc\"}) by (environment, data_center, host, keyspace, table)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.{{keyspace}}.{{table}}.KeyCacheHitRate",
+                "refId": "A",
+                "target": "aliasByNode(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.KeyCacheHitRate.value, 2, 3, 9, 10)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Key Cache Hit Rate (per table and host)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "percentunit",
+                "label": "Key cache hit rate",
+                "logBase": 1,
+                "max": "1",
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          }
+        ],
+        "repeat": null,
+        "repeatIteration": null,
+        "repeatRowId": null,
+        "showTitle": true,
+        "title": "Key Caches",
+        "titleSize": "h6"
+      },
+      {
+        "collapse": false,
+        "height": "250px",
+        "panels": [
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "description": "This graph displays the rate at which the row cache returns a fully cached row. Cassandra's row cache bypasses disk seeks.\n\nDo note that row caching is not typically recommended unless the size of the rows to be cached is known ahead of time.\n\nTables with narrow partitions are best suited for row caches due to their constant row sizes.\n\n##### Values\n\nIf the row cache hit rate is low, consider:\n\n* Separating data that is read often into another table in an effort to reduce row cache churning.\n\n##### Warning\n\nDo not attempt to maximize caching at the expense of a correctly tuned Java heap space. Disabling row caching to have an efficiently running JVM is usually more ideal.",
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 24,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_RowCacheMiss{environment=\"$env\", data_center=\"$dc\"}) by (keyspace, table)",
+                "format": "time_series",
+                "legendFormat": "{{keyspace}}.{{table}}.RowCacheMiss",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.RowCacheMiss.count, 2, 3), 1, 7, 8, 9)",
+                "textEditor": false
+              },
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_RowCacheHit{environment=\"$env\", data_center=\"$dc\"}) by (keyspace, table)",
+                "format": "time_series",
+                "legendFormat": "{{keyspace}}.{{table}}.RowCacheHit",
+                "refId": "B",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.RowCacheHit.count, 2, 3), 1, 7, 8, 9)",
+                "textEditor": false
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Row Cache Hits and Misses (per table)",
+            "tooltip": {
+              "msResolution": true,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "percentunit",
+                "label": "Mean row cache hits and misses",
+                "logBase": 1,
+                "max": "1",
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "description": "This graph displays the rate at which the row cache returns a fully cached row. Cassandra's row cache bypasses disk seeks.\n\nDo note that row caching is not typically recommended unless the size of the rows to be cached is known ahead of time.\n\nTables with narrow partitions are best suited for row caches due to their constant row sizes.\n\n##### Values\n\nIf the row cache hit rate is low, consider:\n\n* Separating data that is read often into another table in an effort to reduce row cache churning.\n\n##### Warning\n\nDo not attempt to maximize caching at the expense of a correctly tuned Java heap space. Disabling row caching to have an efficiently running JVM is usually more ideal.",
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 25,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_RowCacheMiss{environment=\"$env\", data_center=\"$dc\"}) by (environment, data_center, host)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.RowCacheMiss",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.RowCacheMiss.count, 9, 10), 1, 2, 3, 9)",
+                "textEditor": false
+              },
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_RowCacheHit{environment=\"$env\", data_center=\"$dc\"}) by (environment, data_center, host)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.RowCacheHit",
+                "refId": "B",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.RowCacheHit.count, 9, 10), 1, 2, 3, 9)",
+                "textEditor": false
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Row Cache Hits and Misses (per host)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "percentunit",
+                "label": "Mean row cache hits and misses",
+                "logBase": 1,
+                "max": "1",
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "description": "This graph displays the rate at which the row cache returns a fully cached row. Cassandra's row cache bypasses disk seeks.\n\nDo note that row caching is not typically recommended unless the size of the rows to be cached is known ahead of time.\n\nTables with narrow partitions are best suited for row caches due to their constant row sizes.\n\n##### Values\n\nIf the row cache hit rate is low, consider:\n\n* Separating data that is read often into another table in an effort to reduce row cache churning.\n\n##### Warning\n\nDo not attempt to maximize caching at the expense of a correctly tuned Java heap space. Disabling row caching to have an efficiently running JVM is usually more ideal.",
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 26,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_RowCacheMiss{environment=\"$env\", data_center=\"$dc\"}) by (environment, data_center, host, keyspace, table)",
+                "format": "time_series",
+                "interval": "",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.{{keyspace}}.{{table}}.RowCacheMiss",
+                "refId": "A",
+                "target": "aliasByNode(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.RowCacheMiss.count, 2, 3, 9, 10, 11)",
+                "textEditor": false
+              },
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_RowCacheHit{environment=\"$env\", data_center=\"$dc\"}) by (environment, data_center, host, keyspace, table)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.{{keyspace}}.{{table}}.RowCacheHit",
+                "refId": "B",
+                "target": "aliasByNode(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.RowCacheHit.count, 2, 3, 9, 10, 11)",
+                "textEditor": false
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Row Cache Hits and Misses (per table and host)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "percentunit",
+                "label": "Row cache hits and misses",
+                "logBase": 1,
+                "max": "1",
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          }
+        ],
+        "repeat": null,
+        "repeatIteration": null,
+        "repeatRowId": null,
+        "showTitle": true,
+        "title": "Row Caches",
+        "titleSize": "h6"
+      },
+      {
+        "collapse": false,
+        "height": "250px",
+        "panels": [
+          {
+            "alert": {
+              "conditions": [
+                {
+                  "evaluator": {
+                    "params": [
+                      15
+                    ],
+                    "type": "gt"
+                  },
+                  "operator": {
+                    "type": "and"
+                  },
+                  "query": {
+                    "params": [
+                      "A",
+                      "5m",
+                      "now"
+                    ]
+                  },
+                  "reducer": {
+                    "params": [],
+                    "type": "avg"
+                  },
+                  "type": "query"
+                }
+              ],
+              "executionErrorState": "alerting",
+              "frequency": "60s",
+              "handler": 1,
+              "name": "Bloom Filter False Positive Ratio (per table) alert",
+              "noDataState": "no_data",
+              "notifications": [
+                {
+                  "id": 0
+                }
+              ]
+            },
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "description": "This graph displays the ratio of false positive requests the Cassandra bloom filters produce.\n\nA [bloom filter](https://en.wikipedia.org/wiki/Bloom_filter) exists per SSTable to probabilistically determine if a key exists in the associated SSTable.\n\nUpon writing an SSTable, a key is run through a series of hash functions which activate cells within a bitmap.\n\nThe same hash functions are applied onto the key when determining if an SSTable should be read. If the bitmap's values are active for all the hashed cells, the _possibility_ of the data existing within the SSTable exists.\n\nIf the bloom filter indicates that a key may exist within an SSTable but reading the SSTable does not produce a match, the false positive ratio is increased.\n\nDo note that false negatives cannot exist within bloom filters. This means that bloom filters will never fail to return a match when a key exists in an SSTable.\n\n##### Values\n\nAs the bloom filter's false positive ratio nears 100% false positives, increasing the bloom filter's size relative to the size of the on-disk table data will decrease the number of false positives.\n\nDo account for the bloom filter sizes when calculating off-heap memory consumption.\n\nIf off-heap memory can no longer be expanded and false positives are an issue, consider horizontally scaling the Cassandra cluster. By adding more nodes to the cluster, we decrease data load per node, thereby requiring smaller bloom filters to maintain low, healthy bloom filter false positive ratios.",
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 39,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_BloomFilterFalseRatio{environment=\"$env\", data_center=\"$dc\"}) by (keyspace, table)",
+                "format": "time_series",
+                "legendFormat": "{{keyspace}}.{{table}}.BloomFilterFalseRatio",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.BloomFilterFalseRatio.value, 2, 3), 1, 7, 8, 9)"
+              }
+            ],
+            "thresholds": [
+              {
+                "colorMode": "critical",
+                "fill": true,
+                "line": true,
+                "op": "gt",
+                "value": 15
+              }
+            ],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Bloom Filter False Positive Ratio (per table)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "percent",
+                "label": "Mean false positive ratio",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "description": "This graph displays the ratio of false positive requests the Cassandra bloom filters produce.\n\nA [bloom filter](https://en.wikipedia.org/wiki/Bloom_filter) exists per SSTable to probabilistically determine if a key exists in the associated SSTable.\n\nUpon writing an SSTable, a key is run through a series of hash functions which activate cells within a bitmap.\n\nThe same hash functions are applied onto the key when determining if an SSTable should be read. If the bitmap's values are active for all the hashed cells, the _possibility_ of the data existing within the SSTable exists.\n\nIf the bloom filter indicates that a key may exist within an SSTable but reading the SSTable does not produce a match, the false positive ratio is increased.\n\nDo note that false negatives cannot exist within bloom filters. This means that bloom filters will never fail to return a match when a key exists in an SSTable.\n\n##### Values\n\nAs the bloom filter's false positive ratio nears 100% false positives, increasing the bloom filter's size relative to the size of the on-disk table data will decrease the number of false positives.\n\nDo account for the bloom filter sizes when calculating off-heap memory consumption.\n\nIf off-heap memory can no longer be expanded and false positives are an issue, consider horizontally scaling the Cassandra cluster. By adding more nodes to the cluster, we decrease data load per node, thereby requiring smaller bloom filters to maintain low, healthy bloom filter false positive ratios.",
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 40,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_BloomFilterFalseRatio{environment=\"$env\", data_center=\"$dc\"}) by (environment, data_center, host)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.BloomFilterFalseRatio",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.BloomFilterFalseRatio.value, 9, 10), 1, 2, 3, 9)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Bloom Filter False Positive Ratio (per host)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "percentunit",
+                "label": "Mean false positive ratio",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "description": "This graph displays the ratio of false positive requests the Cassandra bloom filters produce.\n\nA [bloom filter](https://en.wikipedia.org/wiki/Bloom_filter) exists per SSTable to probabilistically determine if a key exists in the associated SSTable.\n\nUpon writing an SSTable, a key is run through a series of hash functions which activate cells within a bitmap.\n\nThe same hash functions are applied onto the key when determining if an SSTable should be read. If the bitmap's values are active for all the hashed cells, the _possibility_ of the data existing within the SSTable exists.\n\nIf the bloom filter indicates that a key may exist within an SSTable but reading the SSTable does not produce a match, the false positive ratio is increased.\n\nDo note that false negatives cannot exist within bloom filters. This means that bloom filters will never fail to return a match when a key exists in an SSTable.\n\n##### Values\n\nAs the bloom filter's false positive ratio nears 100% false positives, increasing the bloom filter's size relative to the size of the on-disk table data will decrease the number of false positives.\n\nDo account for the bloom filter sizes when calculating off-heap memory consumption.\n\nIf off-heap memory can no longer be expanded and false positives are an issue, consider horizontally scaling the Cassandra cluster. By adding more nodes to the cluster, we decrease data load per node, thereby requiring smaller bloom filters to maintain low, healthy bloom filter false positive ratios.",
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 41,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_BloomFilterFalseRatio{environment=\"$env\", data_center=\"$dc\"}) by (environment, data_center, host, keyspace, table)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.{{keyspace}}.{{table}}.BloomFilterFalseRatio",
+                "refId": "A",
+                "target": "aliasByNode(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.BloomFilterFalseRatio.value, 2, 3, 9, 10)",
+                "textEditor": false
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Bloom Filter False Positive Ratio (per table and host)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "percentunit",
+                "label": "False positive ratio",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "alert": {
+              "conditions": [
+                {
+                  "evaluator": {
+                    "params": [
+                      100000000
+                    ],
+                    "type": "gt"
+                  },
+                  "operator": {
+                    "type": "and"
+                  },
+                  "query": {
+                    "params": [
+                      "A",
+                      "5m",
+                      "now"
+                    ]
+                  },
+                  "reducer": {
+                    "params": [],
+                    "type": "avg"
+                  },
+                  "type": "query"
+                }
+              ],
+              "executionErrorState": "alerting",
+              "frequency": "60s",
+              "handler": 1,
+              "name": "Bloom Filter Disk Consumption (per table) alert",
+              "noDataState": "no_data",
+              "notifications": [
+                {
+                  "id": 0
+                }
+              ]
+            },
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "description": "This graph displays the size of Cassandra's bloom filters.\n\nA [bloom filter](https://en.wikipedia.org/wiki/Bloom_filter) exists per SSTable to probabilistically determine if a key exists in the associated SSTable.\n\nWhile a bloom filter is not strictly needed for tables that use the `LeveledCompactionStrategy` due to the relatively smaller key ranges, a small bloom filter helps when there are many `LeveledCompactionStrategy` levels.\n\n##### Values\n\nWhen the bloom filter's false positive ratio reaches the `bloom_filter_fp_chance` as defined by a table's schema, the size of the bloom filter is increased upon the next compaction or `nodetool upgradesstables` command to ensure the false positive ratio stays under the `bloom_filter_fp_chance` setting.\n\nHaving large bloom filters will:\n\n* Affect off-heap memory consumption.\n* Indicate large SSTables exist, which can be an issue for tables using the `SizeTieredCompactionStrategy`.\n\nIf bloom filters are growing increasingly large, consider horizontally scaling the Cassandra cluster. By adding more nodes to the cluster, we decrease data load per node, thereby requiring smaller bloom filters to maintain low, healthy bloom filter false positive ratios.",
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 42,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_BloomFilterDiskSpaceUsed{environment=\"$env\", data_center=\"$dc\"}) by (keyspace, table)",
+                "format": "time_series",
+                "legendFormat": "{{keyspace}}.{{table}}.BloomFilterDiskSpaceUsed",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.BloomFilterDiskSpaceUsed.value, 2, 3), 1, 7, 8, 9)"
+              }
+            ],
+            "thresholds": [
+              {
+                "colorMode": "critical",
+                "fill": true,
+                "line": true,
+                "op": "gt",
+                "value": 100000000
+              }
+            ],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Bloom Filter Disk Consumption (per table)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "bytes",
+                "label": "Mean bloom filter sizes",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "description": "This graph displays the size of Cassandra's bloom filters.\n\nA [bloom filter](https://en.wikipedia.org/wiki/Bloom_filter) exists per SSTable to probabilistically determine if a key exists in the associated SSTable.\n\nWhile a bloom filter is not strictly needed for tables that use the `LeveledCompactionStrategy` due to the relatively smaller key ranges, a small bloom filter helps when there are many `LeveledCompactionStrategy` levels.\n\n##### Values\n\nWhen the bloom filter's false positive ratio reaches the `bloom_filter_fp_chance` as defined by a table's schema, the size of the bloom filter is increased upon the next compaction or `nodetool upgradesstables` command to ensure the false positive ratio stays under the `bloom_filter_fp_chance` setting.\n\nHaving large bloom filters will:\n\n* Affect off-heap memory consumption.\n* Indicate large SSTables exist, which can be an issue for tables using the `SizeTieredCompactionStrategy`.\n\nIf bloom filters are growing increasingly large, consider horizontally scaling the Cassandra cluster. By adding more nodes to the cluster, we decrease data load per node, thereby requiring smaller bloom filters to maintain low, healthy bloom filter false positive ratios.",
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 43,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_BloomFilterDiskSpaceUsed{environment=\"$env\", data_center=\"$dc\"}) by (environment, data_center, host)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.BloomFilterDiskSpaceUsed",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.BloomFilterDiskSpaceUsed.value, 9, 10), 1, 2, 3, 9)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Bloom Filter Disk Consumption (per host)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "bytes",
+                "label": "Mean bloom filter sizes",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "description": "This graph displays the size of Cassandra's bloom filters.\n\nA [bloom filter](https://en.wikipedia.org/wiki/Bloom_filter) exists per SSTable to probabilistically determine if a key exists in the associated SSTable.\n\nWhile a bloom filter is not strictly needed for tables that use the `LeveledCompactionStrategy` due to the relatively smaller key ranges, a small bloom filter helps when there are many `LeveledCompactionStrategy` levels.\n\n##### Values\n\nWhen the bloom filter's false positive ratio reaches the `bloom_filter_fp_chance` as defined by a table's schema, the size of the bloom filter is increased upon the next compaction or `nodetool upgradesstables` command to ensure the false positive ratio stays under the `bloom_filter_fp_chance` setting.\n\nHaving large bloom filters will:\n\n* Affect off-heap memory consumption.\n* Indicate large SSTables exist, which can be an issue for tables using the `SizeTieredCompactionStrategy`.\n\nIf bloom filters are growing increasingly large, consider horizontally scaling the Cassandra cluster. By adding more nodes to the cluster, we decrease data load per node, thereby requiring smaller bloom filters to maintain low, healthy bloom filter false positive ratios.",
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 44,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_BloomFilterDiskSpaceUsed{environment=\"$env\", data_center=\"$dc\"}) by (environment, data_center, host, keyspace, table)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.{{keyspace}}.{{table}}.BloomFilterDiskSpaceUsed",
+                "refId": "A",
+                "target": "aliasByNode(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.BloomFilterDiskSpaceUsed.value, 2, 3, 9, 10)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Bloom Filter Disk Consumption (per table and host)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "bytes",
+                "label": "Bloom filter sizes",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          }
+        ],
+        "repeat": null,
+        "repeatIteration": null,
+        "repeatRowId": null,
+        "showTitle": true,
+        "title": "Bloom Filters",
+        "titleSize": "h6"
+      }
+    ],
+    "schemaVersion": 14,
+    "style": "dark",
+    "tags": [
+      "cassandra",
+      "tlp"
+    ],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "text": "environment",
+          "value": "environment"
+        },
+        "datasource": "prometheus",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Environment",
+        "multi": false,
+        "name": "env",
+        "options": [],
+        "query": "label_values(org_apache_cassandra_metrics_Storage_Load, environment)",
+        "refresh": 2,
+        "regex": "",
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": true
+      },
+      {
+        "allValue": "",
+        "current": {
+          "text": "data_center",
+          "value": "data_center"
+        },
+        "datasource": "prometheus",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Data Center",
+        "multi": false,
+        "name": "dc",
+        "options": [],
+        "query": "label_values(org_apache_cassandra_metrics_Storage_Load, data_center)",
+        "refresh": 2,
+        "regex": "",
+        "sort": 1,
+        "tagValuesQuery": null,
+        "tags": [],
+        "tagsQuery": null,
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": "prometheus",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Host",
+        "multi": false,
+        "name": "host",
+        "options": [],
+        "query": "label_values(org_apache_cassandra_metrics_Storage_Load, host)",
+        "refresh": 2,
+        "regex": "",
+        "sort": 1,
+        "tagValuesQuery": null,
+        "tags": [],
+        "tagsQuery": null,
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+    "time": {
+      "from": "now-6h",
+      "to": "now"
+    },
+    "timepicker": {
+      "refresh_intervals": [
+        "5s",
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ],
+      "time_options": [
+        "5m",
+        "15m",
+        "1h",
+        "6h",
+        "12h",
+        "24h",
+        "2d",
+        "7d",
+        "30d"
+      ]
+    },
+    "timezone": "browser",
+    "title": "TLP - Cassandra - Read Path",
+    "version": null
+  },
+  "overwrite": true
+}

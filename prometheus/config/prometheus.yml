@@ -1,0 +1,42 @@
+global:
+  scrape_interval:     30s
+  evaluation_interval: 15s
+  # scrape_timeout is set to the global default (10s).
+
+  # Attach these labels to any time series or alerts when communicating with
+  # external systems (federation, remote storage, Alertmanager).
+  external_labels:
+      monitor: 'pickle-farm'
+
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  - job_name: 'cassandra'
+    static_configs:
+      - targets: ['cassandra:7070']
+        labels:
+          service: 'cassandra'
+          component: 'cassandra'
+          environment: 'environment'
+          data_center: 'data_center'
+          host: 'cassandra'
+      - targets: ['cassandra:9103']
+        labels:
+          service: 'cassandra'
+          component: 'collectd'
+          environment: 'environment'
+          data_center: 'data_center'
+          host: 'cassandra'
+
+  - job_name: 'cassandra-reaper'
+    metrics_path: '/prometheusMetrics'
+    static_configs:
+      - targets: ['cassandra-reaper:8081']
+        labels:
+          service: 'cassandra'
+          component: 'cassandra-reaper'
+          environment: 'environment'
+          data_center: 'data_center'
+          host: 'cassandra-reaper'

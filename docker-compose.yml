@@ -1,0 +1,87 @@
+version: '2.1'
+
+services:
+  cassandra:
+    build: cassandra
+    env_file:
+      - cassandra/cassandra.env
+#    ports:
+#      - "7199:7199" # JMX
+#      - "7000:7000" # cluster communication
+#      - "7001:7001" # cluster communication (SSL)
+#      - "9042:9042" # native protocol clients
+#      - "9160:9160" # thrift clients
+    volumes:
+      - ./cassandra/config/collectd.cassandra.conf:/etc/collectd/collectd.conf
+#      - ./cassandra/config/graphite.cassandra.yaml:/etc/cassandra/graphite.yaml
+#      - ./cassandra/config/filebeat.yml:/etc/filebeat/filebeat.yml
+      - ./cassandra/config/prometheus.yml:/prometheus/prometheus.yml
+      - ./data/cassandra:/var/lib/cassandra
+
+  cqlsh:
+    image: cassandra:3.11
+    entrypoint: cqlsh cassandra
+    volumes:
+      - ./cassandra/schema.cql:/schema.cql
+
+  nodetool:
+    image: cassandra:3.11
+    entrypoint: nodetool -h cassandra -u cassandraUser -pw cassandraPass
+    command: help
+
+  cassandra-reaper:
+    image: thelastpickle/cassandra-reaper:ab0fff2
+    env_file:
+      - cassandra-reaper/cassandra-reaper.env
+    links:
+      - cassandra:cassandra
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+
+  grafana:
+    image: grafana/grafana:4.5.2
+    env_file:
+      - grafana/grafana.env
+    links:
+      - prometheus:prometheus
+    ports:
+      - "3000:3000"
+    restart: always
+    volumes:
+      - ./data/grafana:/var/lib/grafana
+
+  logspout:
+    build: logspout
+#    command: syslog+tcp://logs.papertrailapp.com:$PAPERTRAIL_PORT
+    env_file:
+      - logspout/logspout.env
+    restart: always
+    ports:
+      - "8000:80"
+    volumes:
+      # security concern:
+      # https://raesene.github.io/blog/2016/03/06/The-Dangers-Of-Docker.sock/
+      # http://stackoverflow.com/questions/40844197
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+
+  pickle-factory:
+    build: pickle-factory
+    env_file:
+      - pickle.env
+
+  pickle-shop:
+    build: pickle-shop
+    env_file:
+      - pickle.env
+
+  prometheus:
+    image: prom/prometheus:v1.7.1
+    links:
+      - cassandra:cassandra
+      - cassandra-reaper:cassandra-reaper
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./data/prometheus:/prometheus
+      - ./prometheus/config/prometheus.yml:/etc/prometheus/prometheus.yml

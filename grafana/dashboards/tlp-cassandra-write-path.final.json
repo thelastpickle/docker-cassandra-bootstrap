@@ -1,0 +1,3962 @@
+{
+  "dashboard": {
+    "annotations": {
+      "list": []
+    },
+    "editable": true,
+    "gnetId": null,
+    "graphTooltip": 1,
+    "hideControls": false,
+    "id": null,
+    "links": [
+      {
+        "asDropdown": true,
+        "icon": "external link",
+        "includeVars": false,
+        "keepTime": true,
+        "tags": [
+          "tlp",
+          "cassandra"
+        ],
+        "title": "Other TLP Dashboards",
+        "type": "dashboards"
+      }
+    ],
+    "refresh": "5m",
+    "rows": [
+      {
+        "collapse": false,
+        "height": "200px",
+        "panels": [
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 1,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_WriteLatency{environment=\"$env\", data_center=\"$dc\", unit=\"95thPercentile\"}) by (keyspace, table)",
+                "format": "time_series",
+                "legendFormat": "{{keyspace}}.{{table}}.WriteLatency.p95",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.WriteLatency.95percentile, 2, 3), 1, 7, 8, 9)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Write Latency (per table) - p95",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "µs",
+                "label": "Mean write request latencies of p95",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 3,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_WriteLatency{environment=\"$env\", data_center=\"$dc\", unit=\"95thPercentile\"}) by (environment, data_center, host)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.WriteLatency.p95",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.WriteLatency.95percentile, 9, 10), 1, 2, 3, 9)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Write Latency (per host) - p95",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "µs",
+                "label": "Mean write request latencies of p95",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 5,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_WriteLatency{environment=\"$env\", data_center=\"$dc\", unit=\"95thPercentile\"}) by (environment, data_center, host, keyspace, table)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.{{keyspace}}.{{table}}.WriteLatency.p95",
+                "refId": "A",
+                "target": "aliasByNode(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.WriteLatency.95percentile, 2, 3, 9, 10)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Write Latency (per table and host) - p95",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "µs",
+                "label": "Write request latencies - p95",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 33,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_WriteLatency{environment=\"$env\", data_center=\"$dc\", unit=\"OneMinuteRate\"}) by (keyspace, table)",
+                "format": "time_series",
+                "legendFormat": "{{keyspace}}.{{table}}.WriteLatency.m1",
+                "refId": "A",
+                "target": "aliasByNode(sumSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.WriteLatency.1MinuteRate, 2, 3), 1, 7, 8, 10)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Write Request Counts (per table)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "opm",
+                "label": "Total write request rate",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 34,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_WriteLatency{environment=\"$env\", data_center=\"$dc\", unit=\"OneMinuteRate\"}) by (environment, data_center, host)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.WriteLatency.m1",
+                "refId": "A",
+                "target": "aliasByNode(sumSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.WriteLatency.1MinuteRate, 9, 10), 1, 2, 3, 10)",
+                "textEditor": false
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Write Request Counts (per host)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "opm",
+                "label": "Total write request rate",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 35,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_WriteLatency{environment=\"$env\", data_center=\"$dc\", unit=\"OneMinuteRate\"}) by (environment, data_center, host, keyspace, table)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.{{keyspace}}.{{table}}.WriteLatency.m1",
+                "refId": "A",
+                "target": "aliasByNode(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.WriteLatency.1MinuteRate, 2, 3, 9, 10)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Write Request Counts (per table and host)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "opm",
+                "label": "Write request rate",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          }
+        ],
+        "repeat": null,
+        "repeatIteration": null,
+        "repeatRowId": null,
+        "showTitle": true,
+        "title": "Write Latencies and Counts",
+        "titleSize": "h6"
+      },
+      {
+        "collapse": false,
+        "height": "250px",
+        "panels": [
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 70,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_ClientRequest_Latency{environment=\"$env\", data_center=\"$dc\", scope=\"CASWrite\", unit=\"95thPercentile\"}) by (environment, data_center, host)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.CASWrite.Latency.p95",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ClientRequest.CASWrite.Latency.95percentile, 9, 10), 1, 2, 3, 9)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "CAS Write Latency (per host) - p95",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "µs",
+                "label": "Mean CAS write latency of p95",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 71,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_ClientRequest_Timeouts{environment=\"$env\", data_center=\"$dc\", scope=\"CASWrite\", unit=\"OneMinuteRate\"}) by (environment, data_center, host)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.CASWrite.Timeouts.m1",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ClientRequest.CASWrite.Timeouts.1MinuteRate, 9, 10), 1, 2, 3, 9)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "CAS Write Timeouts (per host)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "opm",
+                "label": "Mean rate of CAS write timeouts",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 72,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_ClientRequest_Unavailables{environment=\"$env\", data_center=\"$dc\", scope=\"CASWrite\", unit=\"OneMinuteRate\"}) by (environment, data_center, host)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.CASWrite.Unavailables.m1",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ClientRequest.CASWrite.Unavailables.1MinuteRate, 9, 10), 1, 2, 3, 9)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "CAS Write Unavailables (per host)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "opm",
+                "label": "Mean rate of CAS write unavailables",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 73,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_ClientRequest_UnfinishedCommit{environment=\"$env\", data_center=\"$dc\", scope=\"CASWrite\", unit=\"Count\"}) by (environment, data_center, host)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.CASWrite.UnfinishedCommit",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ClientRequest.CASWrite.UnfinishedCommit.count, 9, 10), 1, 2, 3, 9)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "CAS Write Unfinished Commits (per host)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "short",
+                "label": "Mean unfinished CAS write commits",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 74,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_ClientRequest_ConditionNotMet{environment=\"$env\", data_center=\"$dc\", scope=\"CASWrite\", unit=\"Count\"}) by (environment, data_center, host)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.CASWrite.ConditionNotMet",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ClientRequest.CASWrite.ConditionNotMet.count, 9, 10), 1, 2, 3, 9)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "CAS Write Conditions Not Met (per host)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "short",
+                "label": "Mean CAS write conditions not met",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 75,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_ClientRequest_ContentionHistogram{environment=\"$env\", data_center=\"$dc\", scope=\"CASWrite\", unit=\"95thPercentile\"}) by (environment, data_center, host)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.CASWrite.Contention.p95",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ClientRequest.CASWrite.ContentionHistogram.95percentile, 9, 10), 1, 2, 3, 9)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "CAS Write Contention (per host) - p95",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "short",
+                "label": "Mean contended CAS writes of p95",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          }
+        ],
+        "repeat": null,
+        "repeatIteration": null,
+        "repeatRowId": null,
+        "showTitle": true,
+        "title": "CAS Latencies and Counts",
+        "titleSize": "h6"
+      },
+      {
+        "collapse": false,
+        "height": "250px",
+        "panels": [
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 48,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_CasPrepareLatency{environment=\"$env\", data_center=\"$dc\", unit=\"95thPercentile\"}) by (keyspace, table)",
+                "format": "time_series",
+                "legendFormat": "{{keyspace}}.{{table}}.CASPrepare.Latency.p95",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.CasPrepareLatency.95percentile, 2, 3), 1, 7, 8, 9)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "CAS Prepare Latency (per table) - p95",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "µs",
+                "label": "Mean CAS prepare latencies of p95",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 49,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_CasPrepareLatency{environment=\"$env\", data_center=\"$dc\", unit=\"95thPercentile\"}) by (environment, data_center, host)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.CASPrepare.Latency.p95",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.CasPrepareLatency.95percentile, 9, 10), 1, 2, 3, 9)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "CAS Prepare Latency (per host) - p95",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "µs",
+                "label": "Mean CAS prepare latencies of p95",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 50,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_CasPrepareLatency{environment=\"$env\", data_center=\"$dc\", unit=\"95thPercentile\"}) by (environment, data_center, host, keyspace, table)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.{{keyspace}}.{{table}}.CASPrepare.Latency.p95",
+                "refId": "A",
+                "target": "aliasByNode(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.CasPrepareLatency.95percentile, 2, 3, 9, 10)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "CAS Prepare Latency (per table and host) - p95",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "µs",
+                "label": "CAS prepare latencies - p95",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 51,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_CasProposeLatency{environment=\"$env\", data_center=\"$dc\", unit=\"95thPercentile\"}) by (keyspace, table)",
+                "format": "time_series",
+                "legendFormat": "{{keyspace}}.{{table}}.CASPropose.Latency.p95",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.CasProposeLatency.95percentile, 2, 3), 1, 7, 8, 9)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "CAS Propose Latency (per table) - p95",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "µs",
+                "label": "Mean CAS propose latencies of p95",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 52,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_CasProposeLatency{environment=\"$env\", data_center=\"$dc\", unit=\"95thPercentile\"}) by (environment, data_center, host)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.CASPropose.Latency.p95",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.CasProposeLatency.95percentile, 9, 10), 1, 2, 3, 9)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "CAS Propose Latency (per host) - p95",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "µs",
+                "label": "Mean CAS propose latencies of p95",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 53,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_CasProposeLatency{environment=\"$env\", data_center=\"$dc\", unit=\"95thPercentile\"}) by (environment, data_center, host, keyspace, table)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.{{keyspace}}.{{table}}.CASPropose.Latency.p95",
+                "refId": "A",
+                "target": "aliasByNode(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.CasProposeLatency.95percentile, 2, 3, 9, 10)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "CAS Propose Latency (per table and host) - p95",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "µs",
+                "label": "CAS propose latencies - p95",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 54,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_CasCommitLatency{environment=\"$env\", data_center=\"$dc\", unit=\"95thPercentile\"}) by (keyspace, table)",
+                "format": "time_series",
+                "legendFormat": "{{keyspace}}.{{table}}.CASCommit.Latency.p95",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.CasCommitLatency.95percentile, 2, 3), 1, 7, 8, 9)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "CAS Commit Latency (per table) - p95",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "µs",
+                "label": "Mean CAS commit latencies of p95",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 55,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_CasCommitLatency{environment=\"$env\", data_center=\"$dc\", unit=\"95thPercentile\"}) by (environment, data_center, host)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.CASCommit.Latency.p95",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.CasCommitLatency.95percentile, 9, 10), 1, 2, 3, 9)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "CAS Commit Latency (per host) - p95",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "µs",
+                "label": "Mean CAS commit latencies of p95",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 56,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_CasCommitLatency{environment=\"$env\", data_center=\"$dc\", unit=\"95thPercentile\"}) by (environment, data_center, host, keyspace, table)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.{{keyspace}}.{{table}}.CASCommit.Latency.p95",
+                "refId": "A",
+                "target": "aliasByNode(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.CasCommitLatency.95percentile, 2, 3, 9, 10)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "CAS Commit Latency (per table and host) - p95",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "µs",
+                "label": "CAS commit latencies - p95",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          }
+        ],
+        "repeat": null,
+        "repeatIteration": null,
+        "repeatRowId": null,
+        "showTitle": true,
+        "title": "CAS Stage Latencies",
+        "titleSize": "h6"
+      },
+      {
+        "collapse": false,
+        "height": "200px",
+        "panels": [
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 45,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_MemtableColumnsCount{environment=\"$env\", data_center=\"$dc\"}) by (keyspace, table)",
+                "format": "time_series",
+                "legendFormat": "{{keyspace}}.{{table}}.MemtableColumnsCount",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.MemtableColumnsCount.value, 2, 3), 1, 7, 8, 9)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Memtable Column Count (per table)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "short",
+                "label": "Mean memtable column count",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 46,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_MemtableColumnsCount{environment=\"$env\", data_center=\"$dc\"}) by (environment, data_center, host)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.MemtableColumnsCount",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.MemtableColumnsCount.value, 9, 10), 1, 2, 3, 9)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Memtable Column Count (per host)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "short",
+                "label": "Mean memtable column count",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 47,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_MemtableColumnsCount{environment=\"$env\", data_center=\"$dc\"}) by (environment, data_center, host, keyspace, table)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.{{keyspace}}.{{table}}.MemtableColumnsCount",
+                "refId": "A",
+                "target": "aliasByNode(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.MemtableColumnsCount.value, 2, 3, 9, 10)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Memtable Column Count (per table and host)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "short",
+                "label": "Memtable column count",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 36,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_MemtableLiveDataSize{environment=\"$env\", data_center=\"$dc\"}) by (keyspace, table)",
+                "format": "time_series",
+                "legendFormat": "{{keyspace}}.{{table}}.MemtableLiveDataSize",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.MemtableLiveDataSize.value, 2, 3), 1, 7, 8, 9)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Memtable Live Data Size (per table)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "bytes",
+                "label": "Mean memtable live data size",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 37,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_MemtableLiveDataSize{environment=\"$env\", data_center=\"$dc\"}) by (environment, data_center, host)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.MemtableLiveDataSize",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.MemtableLiveDataSize.value, 9, 10), 1, 2, 3, 9)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Memtable Live Data Size (per host)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "bytes",
+                "label": "Mean memtable live data size",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 38,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_MemtableLiveDataSize{environment=\"$env\", data_center=\"$dc\"}) by (environment, data_center, host, keyspace, table)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.{{keyspace}}.{{table}}.MemtableLiveDataSize",
+                "refId": "A",
+                "target": "aliasByNode(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.MemtableLiveDataSize.value, 2, 3, 9, 10)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Memtable Live Data Size (per table and host)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "bytes",
+                "label": "Memtable live data size",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 42,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_MemtableOnHeapSize{environment=\"$env\", data_center=\"$dc\"}) by (keyspace, table)",
+                "format": "time_series",
+                "legendFormat": "{{keyspace}}.{{table}}.MemtableOnHeapSize",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.MemtableOnHeapSize.value, 2, 3), 1, 7, 8, 9)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Memtable On-Heap Size (per table)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "bytes",
+                "label": "Mean memtable on-heap size",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 43,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_MemtableOnHeapSize{environment=\"$env\", data_center=\"$dc\"}) by (environment, data_center, host)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.MemtableOnHeapSize",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.MemtableOnHeapSize.value, 9, 10), 1, 2, 3, 9)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Memtable On-Heap Size (per host)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "bytes",
+                "label": "Mean memtable on-heap size",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 44,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_MemtableOnHeapSize{environment=\"$env\", data_center=\"$dc\"}) by (environment, data_center, host, keyspace, table)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.{{keyspace}}.{{table}}.MemtableOnHeapSize",
+                "refId": "A",
+                "target": "aliasByNode(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.MemtableOnHeapSize.value, 2, 3, 9, 10)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Memtable On-Heap Size (per table and host)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "bytes",
+                "label": "Memtable on-heap size",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 39,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_MemtableOffHeapSize{environment=\"$env\", data_center=\"$dc\"}) by (keyspace, table)",
+                "format": "time_series",
+                "legendFormat": "{{keyspace}}.{{table}}.MemtableOffHeapSize",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.MemtableOffHeapSize.value, 2, 3), 1, 7, 8, 9)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Memtable Off-Heap Size (per table)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "bytes",
+                "label": "Mean memtable off-heap size",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 40,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_MemtableOffHeapSize{environment=\"$env\", data_center=\"$dc\"}) by (environment, data_center, host)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.MemtableOffHeapSize",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.MemtableOffHeapSize.value, 9, 10), 1, 2, 3, 9)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Memtable Off-Heap Size (per host)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "bytes",
+                "label": "Mean memtable off-heap size",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 41,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_MemtableOffHeapSize{environment=\"$env\", data_center=\"$dc\"}) by (environment, data_center, host, keyspace, table)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.{{keyspace}}.{{table}}.MemtableOffHeapSize",
+                "refId": "A",
+                "target": "aliasByNode(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.MemtableOffHeapSize.value, 2, 3, 9, 10)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Memtable Off-Heap Size (per table and host)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "bytes",
+                "label": "Memtable off-heap size",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 27,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_AllMemtablesHeapSize{environment=\"$env\", data_center=\"$dc\"}) by (keyspace, table)",
+                "format": "time_series",
+                "legendFormat": "{{keyspace}}.{{table}}.AllMemtablesHeapSize",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.AllMemtablesHeapSize.value, 2, 3), 1, 7, 8, 9)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Memtable Total Heap Size (per table)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "bytes",
+                "label": "Mean memtable total heap size",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 9,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_AllMemtablesHeapSize{environment=\"$env\", data_center=\"$dc\"}) by (environment, data_center, host)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.AllMemtablesHeapSize",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.AllMemtablesHeapSize.value, 9, 10), 1, 2, 3, 9)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Memtable Total Heap Size (per host)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "bytes",
+                "label": "Mean memtable total heap size",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 10,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Table_AllMemtablesHeapSize{environment=\"$env\", data_center=\"$dc\"}) by (environment, data_center, host, keyspace, table)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.{{keyspace}}.{{table}}.AllMemtablesHeapSize",
+                "refId": "A",
+                "target": "aliasByNode(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ColumnFamily.$ks.$table.AllMemtablesHeapSize.value, 2, 3, 9, 10)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Memtable Total Heap Size (per table and host)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "bytes",
+                "label": "Memtable total heap size",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          }
+        ],
+        "repeat": null,
+        "repeatIteration": null,
+        "repeatRowId": null,
+        "showTitle": true,
+        "title": "Memtables",
+        "titleSize": "h6"
+      },
+      {
+        "collapse": false,
+        "height": "250px",
+        "panels": [
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 64,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 6,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_ThreadPools{environment=\"$env\", data_center=\"$dc\", status_pool=\"PendingTasks\", thread_type=\"request\", thread_pool=\"MutationStage\"}) by (environment, data_center, host, thread_pool, status_pool)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.{{thread_pool}}.{{status_pool}}",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ThreadPools.request.MutationStage.PendingTasks.value, 9, 10), 1, 2, 3, 9)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Pending Mutations (per host)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "short",
+                "label": "Mean pending mutations",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 67,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 6,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_ThreadPools{environment=\"$env\", data_center=\"$dc\", status_pool=\"ActiveTasks\", thread_type=\"request\", thread_pool=\"MutationStage\"}) by (environment, data_center, host, thread_pool, status_pool)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.{{thread_pool}}.{{status_pool}}",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ThreadPools.request.MutationStage.ActiveTasks.value, 9, 10), 1, 2, 3, 9)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Active Mutations (per host)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "short",
+                "label": "Mean active mutations",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          }
+        ],
+        "repeat": null,
+        "repeatIteration": null,
+        "repeatRowId": null,
+        "showTitle": true,
+        "title": "Mutations",
+        "titleSize": "h6"
+      },
+      {
+        "collapse": false,
+        "height": "250px",
+        "panels": [
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 58,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 6,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "sum(org_apache_cassandra_metrics_DroppedMessages_Dropped{environment=\"$env\", data_center=\"$dc\", message_type=\"MUTATION\", unit=\"OneMinuteRate\"}) by (environment, data_center, host, message_type)",
+                "format": "time_series",
+                "legendFormat": "{{keyspace}}.{{table}}.DroppedMessages.{{message_type}}.m1",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.DroppedMessage.MUTATION.Dropped.1MinuteRate, 9, 10), 1, 2, 3, 9)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Dropped Mutations (per host)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "opm",
+                "label": "Mean dropped mutation rate",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 61,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 6,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "sum(org_apache_cassandra_metrics_DroppedMessages_Dropped{environment=\"$env\", data_center=\"$dc\", message_type=\"COUNTER_MUTATION\", unit=\"OneMinuteRate\"}) by (environment, data_center, host, message_type)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.DroppedMessages.{{message_type}}.m1",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.DroppedMessage.COUNTER_MUTATION.Dropped.1MinuteRate, 9, 10), 1, 2, 3, 9)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Dropped Counter Mutations (per host)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "opm",
+                "label": "Mean dropped counter mutation rate",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          }
+        ],
+        "repeat": null,
+        "repeatIteration": null,
+        "repeatRowId": null,
+        "showTitle": true,
+        "title": "Dropped Mutations",
+        "titleSize": "h6"
+      },
+      {
+        "collapse": false,
+        "height": "250px",
+        "panels": [
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 77,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 6,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_CommitLog_TotalCommitLogSize{environment=\"$env\", data_center=\"$dc\"}) by (environment, data_center, host)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.TotalCommitLogSize",
+                "refId": "A",
+                "target": "aliasSub(aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.CommitLog.TotalCommitLogSize.value, 9, 10), 1, 2, 3), '(.*)', '\\1.TotalCommitLogSize')"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Commit Log Sizes (per host)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "bytes",
+                "label": "Mean commit log sizes",
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 82,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 6,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_Storage_Load{environment=\"$env\", data_center=\"$dc\"}) by (environment, data_center, host)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.Storage.Load",
+                "refId": "A",
+                "target": "aliasByNode(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.Storage.Load.count, 3, 9)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Disk Load (per host)",
+            "tooltip": {
+              "msResolution": true,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "bytes",
+                "label": "Disk load",
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 80,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_ThreadPools{environment=\"$env\", data_center=\"$dc\", status_pool=\"PendingTasks\", thread_type=\"internal\", thread_pool=\"MemtableFlushWriter\"}) by (environment, data_center, host, status_pool, thread_pool)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.{{thread_pool}}.{{status_pool}}",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ThreadPools.internal.MemtableFlushWriter.PendingTasks.value, 9), 1, 2, 3, 9)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Pending Commit Log Tasks (per host)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "short",
+                "label": "Mean pending commit log tasks",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 79,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_ThreadPools{environment=\"$env\", data_center=\"$dc\", status_pool=\"ActiveTasks\", thread_type=\"internal\", thread_pool=\"MemtableFlushWriter\"}) by (environment, data_center, host, status_pool, thread_pool)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.{{thread_pool}}.{{status_pool}}",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ThreadPools.internal.MemtableFlushWriter.ActiveTasks.value, 9), 1, 2, 3, 9)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Active Commit Log Tasks (per host)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "short",
+                "label": "Mean active commit log tasks",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          },
+          {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": null,
+            "editable": true,
+            "error": false,
+            "fill": 0,
+            "grid": {},
+            "id": 81,
+            "legend": {
+              "alignAsTable": true,
+              "avg": true,
+              "current": true,
+              "max": true,
+              "min": false,
+              "show": false,
+              "sort": "max",
+              "sortDesc": true,
+              "total": false,
+              "values": true
+            },
+            "lines": true,
+            "linewidth": 2,
+            "links": [],
+            "nullPointMode": "connected",
+            "percentage": false,
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "span": 4,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+              {
+                "expr": "avg(org_apache_cassandra_metrics_ThreadPools{environment=\"$env\", data_center=\"$dc\", status_pool=\"CurrentlyBlockedTasks\", thread_type=\"internal\", thread_pool=\"MemtableFlushWriter\"}) by (environment, data_center, host, status_pool, thread_pool)",
+                "format": "time_series",
+                "legendFormat": "{{environment}}.{{data_center}}.{{host}}.{{thread_pool}}.{{status_pool}}",
+                "refId": "A",
+                "target": "aliasByNode(averageSeriesWithWildcards(cassandra.$env.$dc.$host.org.apache.cassandra.metrics.ThreadPools.internal.MemtableFlushWriter.CurrentlyBlockedTasks.count, 9), 1, 2, 3, 9)"
+              }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Blocked Commit Log Tasks (per host)",
+            "tooltip": {
+              "msResolution": false,
+              "shared": false,
+              "sort": 2,
+              "value_type": "individual"
+            },
+            "transparent": true,
+            "type": "graph",
+            "xaxis": {
+              "buckets": null,
+              "mode": "time",
+              "name": null,
+              "show": true,
+              "values": []
+            },
+            "yaxes": [
+              {
+                "format": "short",
+                "label": "Mean blocked commit log tasks",
+                "logBase": 1,
+                "max": null,
+                "min": "0",
+                "show": true
+              },
+              {
+                "format": "short",
+                "label": null,
+                "logBase": 1,
+                "max": null,
+                "min": null,
+                "show": true
+              }
+            ]
+          }
+        ],
+        "repeat": null,
+        "repeatIteration": null,
+        "repeatRowId": null,
+        "showTitle": true,
+        "title": "Commit Logs",
+        "titleSize": "h6"
+      }
+    ],
+    "schemaVersion": 14,
+    "style": "dark",
+    "tags": [
+      "cassandra",
+      "missing-descriptions",
+      "tlp"
+    ],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "text": "environment",
+          "value": "environment"
+        },
+        "datasource": "prometheus",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Environment",
+        "multi": false,
+        "name": "env",
+        "options": [],
+        "query": "label_values(org_apache_cassandra_metrics_Storage_Load, environment)",
+        "refresh": 2,
+        "regex": "",
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": true
+      },
+      {
+        "allValue": "",
+        "current": {
+          "text": "data_center",
+          "value": "data_center"
+        },
+        "datasource": "prometheus",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Data Center",
+        "multi": false,
+        "name": "dc",
+        "options": [],
+        "query": "label_values(org_apache_cassandra_metrics_Storage_Load, data_center)",
+        "refresh": 2,
+        "regex": "",
+        "sort": 1,
+        "tagValuesQuery": null,
+        "tags": [],
+        "tagsQuery": null,
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": "prometheus",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Host",
+        "multi": false,
+        "name": "host",
+        "options": [],
+        "query": "label_values(org_apache_cassandra_metrics_Storage_Load, host)",
+        "refresh": 2,
+        "regex": "",
+        "sort": 1,
+        "tagValuesQuery": null,
+        "tags": [],
+        "tagsQuery": null,
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+    "time": {
+      "from": "now-6h",
+      "to": "now"
+    },
+    "timepicker": {
+      "refresh_intervals": [
+        "5s",
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ],
+      "time_options": [
+        "5m",
+        "15m",
+        "1h",
+        "6h",
+        "12h",
+        "24h",
+        "2d",
+        "7d",
+        "30d"
+      ]
+    },
+    "timezone": "browser",
+    "title": "TLP - Cassandra - Write Path",
+    "version": null
+  },
+  "overwrite": true
+}

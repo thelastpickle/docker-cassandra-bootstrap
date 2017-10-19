@@ -1,0 +1,98 @@
+---
+lowercaseOutputLabelNames: false
+lowercaseOutputName: false
+blacklistObjectNames:
+- "org.apache.cassandra.metrics:type=*,keyspace=system*,*"
+
+rules:
+- pattern: 'org.apache.cassandra.metrics<type=Client, name=(connectedNativeClients|connectedThriftClients)><>(Count|Value)'
+  name: org.apache.cassandra.metrics.Client.$1
+
+- pattern: 'org.apache.cassandra.metrics<type=ClientRequest, scope=(\w*), name=(ConditionNotMet|ContentionHistogram|Latency|Timeouts|TotalLatency|Unavailables|UnfinishedCommit)><>(Count|Value|75thPercentile|95thPercentile|Max|OneMinuteRate)'
+  name: org.apache.cassandra.metrics.ClientRequest.$2
+  labels:
+    scope: $1
+    unit: $3
+
+- pattern: 'org.apache.cassandra.metrics<type=ClientRequest, scope=(\w*), name=(Latency)><>(99thPercentile)'
+  name: org.apache.cassandra.metrics.ClientRequest.$2
+  labels:
+    scope: $1
+    unit: $3
+
+# Blacklisted: TrueSnapshotsSize, EstimatedPartitionCount
+- pattern: 'org.apache.cassandra.metrics<type=(ColumnFamily|Table), keyspace=(\S*), scope=(\S*), name=(AllMemtablesHeapSize|AllMemtablesLiveDataSize|AllMemtablesOffHeapSize|AllMemtablesOnHeapSize|AnticompactionTime|BloomFilterDiskSpaceUsed|BloomFilterFalseRatio|BloomFilterOffHeapMemoryUsed|CasCommitLatency|CasPrepareLatency|CasProposeLatency|CompressionMetadataOffHeapMemoryUsed|CompressionRatio|CoordinatorReadLatency|CoordinatorScanLatency|EstimatedColumnCountHistogram|EstimatedPartitionSizeHistogram|IndexSummaryOffHeapMemoryUsed|KeyCacheHitRate|LiveDiskSpaceUsed|LiveScannedHistogram|LiveSSTableCount|MaxRowSize|MeanRowSize|MemtableColumnsCount|MemtableLiveDataSize|MemtableOffHeapSize|MemtableOnHeapSize|PercentRepaired|RangeLatency|ReadLatency|RowCacheHit|RowCacheMiss|SSTablesPerReadHistogram|SyncTime|TombstoneScannedHistogram|TotalDiskSpaceUsed|ValidationTime|WriteLatency|PendingCompactions)><>(Count|Value|75thPercentile|95thPercentile|Max|OneMinuteRate)'
+#  name: org.apache.cassandra.metrics.Table.$4.$2.$3.$5
+  name: org.apache.cassandra.metrics.Table.$4
+  labels:
+    keyspace: $2
+    table: $3
+    unit: $5
+
+# Missing: ActiveTasks|CurrentlyBlockedTask
+- pattern: 'org.apache.cassandra.metrics<type=CommitLog, name=(ActiveTasks|CurrentlyBlockedTask|PendingTasks|TotalCommitLogSize)><>(Count|Value|75thPercentile|95thPercentile|Max)'
+  name: org.apache.cassandra.metrics.CommitLog.$1
+  labels:
+    unit: $2
+
+- pattern: 'org.apache.cassandra.metrics<type=Compaction, name=(BytesCompacted|PendingTasks|TotalCompactionsCompleted)><>(Count|Value|OneMinuteRate)'
+  name: org.apache.cassandra.metrics.Compaction.$1
+  labels:
+    unit: $2
+
+- pattern: 'org.apache.cassandra.metrics<type=CQL, name=(PreparedStatementsCount|PreparedStatementsEvicted|PreparedStatementsRatio|RegularStatementsExecuted)><>(Count|Value|75thPercentile|95thPercentile|Max)'
+  name: org.apache.cassandra.metrics.CQL.$1
+  labels:
+    unit: $2
+
+- pattern: 'org.apache.cassandra.metrics<type=DroppedMessage, scope=(\w*), name=Dropped><>(OneMinuteRate)'
+  name: org.apache.cassandra.metrics.DroppedMessages.Dropped
+  labels:
+    message_type: $1
+    unit: $2
+
+# HintedHandOffManager introduced in 3.0:
+#- pattern: 'org.apache.cassandra.metrics<type=HintedHandOffManager, name=(\w*)><>(Count|Value|75thPercentile|95thPercentile|Max)'
+#  name: org.apache.cassandra.metrics.HintedHandOffManager.$1
+#  labels:
+#    unit: $2
+
+- pattern: 'org.apache.cassandra.metrics<type=Storage, name=(Exceptions|Load|TotalHints|TotalHintsInProgress)><>(Count|Value|75thPercentile|95thPercentile|Max)'
+  name: org.apache.cassandra.metrics.Storage.$1
+  labels:
+    unit: $2
+
+- pattern: 'org.apache.cassandra.metrics<type=ThreadPools, path=(internal|request|transport), scope=(AntiEntropyStage|CompactionExecutor|HintedHandoff|MemtableFlushWriter|MigrationStage|MutationStage|Native-Transport-Requests|ReadRepairStage|ReadStage|ReplicateOnWriteStage|RequestResponseStage|ValidationExecutor), name=(CurrentlyBlockedTasks|PendingTasks)><>(Count|Value)'
+  name: org.apache.cassandra.metrics.ThreadPools
+  labels:
+    status_pool: $3
+    thread_type: $1
+    thread_pool: $2
+
+- pattern: 'org.apache.cassandra.metrics<type=ThreadPools, path=(internal|request|transport), scope=(CompactionExecutor|MemtableFlushWriter|MutationStage|Native-Transport-Requests|RequestResponseStage), name=(ActiveTasks)><>(Count|Value)'
+  name: org.apache.cassandra.metrics.ThreadPools
+  labels:
+    status_pool: $3
+    thread_type: $1
+    thread_pool: $2
+
+- pattern: 'org.apache.cassandra.metrics<type=ThreadPools, path=(internal|request), scope=(GossipStage|MigrationStage|RequestResponseStage), name=(CompletedTasks)><>(Count|Value)'
+  name: org.apache.cassandra.metrics.ThreadPools
+  labels:
+    status_pool: $3
+    thread_type: $1
+    thread_pool: $2
+
+# jvm.fd introduced in 3.0:
+#- pattern: 'java.lang<type=OperatingSystem, name=(\w*)><>(\w*)'
+#  name: jvm.fd.$1.$2
+
+- pattern: 'java.lang<type=GarbageCollector, name=(\w*)><>(\w*)'
+  name: jvm.gc.$1
+  labels:
+    unit: $2
+
+- pattern: 'java.lang<type=MemoryPool, name=(\w*)><>(\w*)'
+  name: jvm.memory.pools.$1
+  labels:
+    unit: $2
