@@ -69,6 +69,8 @@ services:
     build: pickle-factory
     env_file:
       - pickle.env
+    volumes:
+      - ./pickle-factory:/usr/src/app
 
   pickle-shop:
     build: pickle-shop

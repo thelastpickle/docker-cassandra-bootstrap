@@ -1,0 +1,3 @@
+cassandra-driver==3.11.0
+lz4==0.10.1
+scales==1.0.9

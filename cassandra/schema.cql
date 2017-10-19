@@ -3,6 +3,11 @@ CREATE KEYSPACE IF NOT EXISTS pickle
 
 CREATE TABLE IF NOT EXISTS pickle.employees (
   employee_id uuid,
+  PRIMARY KEY ((employee_id))
+) WITH comment = 'Table with all employee IDs.';
+
+CREATE TABLE IF NOT EXISTS pickle.timesheets (
+  employee_id uuid,
   pickle_tree_id uuid,
   timestamp timeuuid,
   pickle_count int,
