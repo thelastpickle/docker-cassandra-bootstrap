@@ -94,3 +94,17 @@ open http://localhost:3000
 # upload dashboards
 ./grafana/bin/upload-dashboards.sh
 ```
+
+# Sample Application
+
+Generate fake workforce and activity:
+
+```bash
+docker-compose run pickle-factory
+```
+
+Sample timesheets:
+
+```bash
+docker-compose run pickle-shop
+```

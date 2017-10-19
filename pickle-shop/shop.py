@@ -77,4 +77,5 @@ for future in futures:
         employee_id = row.employee_id
         pickle_counts += row.pickle_count
 
-    print '%s: %s' % (employee_id, pickle_counts)
+    if employee_id:
+        print '%s: %s' % (employee_id, pickle_counts)
