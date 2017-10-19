@@ -14,6 +14,20 @@ Then find your specific port number by looking at your
 [Log Destinations](https://papertrailapp.com/account/destinations) and update
 your `.env` setting accordingly.
 
+# Starting From Scratch
+
+```bash
+# turn off all running Docker containers
+docker-compose down
+
+# delete any persistent data
+rm -rf data/
+
+# rebuild the images
+docker-compose build
+```
+
+
 # Meetup Workflow
 
 Start our Docker-integrated logging connector:
