@@ -21,6 +21,8 @@ rules:
     unit: $3
 
 # Blacklisted: TrueSnapshotsSize, EstimatedPartitionCount
+# Enabling these metrics will cause excessive system load since Cassandra has to hit disk
+# to populate both of these metrics
 - pattern: 'org.apache.cassandra.metrics<type=(ColumnFamily|Table), keyspace=(\S*), scope=(\S*), name=(AllMemtablesHeapSize|AllMemtablesLiveDataSize|AllMemtablesOffHeapSize|AllMemtablesOnHeapSize|AnticompactionTime|BloomFilterDiskSpaceUsed|BloomFilterFalseRatio|BloomFilterOffHeapMemoryUsed|CasCommitLatency|CasPrepareLatency|CasProposeLatency|CompressionMetadataOffHeapMemoryUsed|CompressionRatio|CoordinatorReadLatency|CoordinatorScanLatency|EstimatedColumnCountHistogram|EstimatedPartitionSizeHistogram|IndexSummaryOffHeapMemoryUsed|KeyCacheHitRate|LiveDiskSpaceUsed|LiveScannedHistogram|LiveSSTableCount|MaxRowSize|MeanRowSize|MemtableColumnsCount|MemtableLiveDataSize|MemtableOffHeapSize|MemtableOnHeapSize|PercentRepaired|RangeLatency|ReadLatency|RowCacheHit|RowCacheMiss|SSTablesPerReadHistogram|SyncTime|TombstoneScannedHistogram|TotalDiskSpaceUsed|ValidationTime|WriteLatency|PendingCompactions)><>(Count|Value|75thPercentile|95thPercentile|Max|OneMinuteRate)'
 #  name: org.apache.cassandra.metrics.Table.$4.$2.$3.$5
   name: org.apache.cassandra.metrics.Table.$4
