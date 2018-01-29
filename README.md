@@ -1,3 +1,9 @@
+# Blog Post
+
+A new blog post covering each of the main components of this project can be found here:
+
+http://thelastpickle.com/blog/2018/01/23/docker-meet-cassandra.html
+
 # Pre-Meetup Setup
 
 ```bash
