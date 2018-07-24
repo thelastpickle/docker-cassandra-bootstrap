@@ -67,7 +67,7 @@ RUN set -x \
         && gpg --export -a 3994D24FB8543576 | apt-key add - \
     && apt-get update \
         && apt-get install -y --no-install-recommends \
-            collectd \
+            collectd=5.7.1-1.1 \
             collectd-utils \
             libprotobuf-c-dev \
             libmicrohttpd-dev \
