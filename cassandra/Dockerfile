@@ -65,7 +65,7 @@ FROM cassandra:3.11
 RUN set -x \
     && echo "deb http://pkg.ci.collectd.org/deb jessie collectd-5.7" \
         > /etc/apt/sources.list.d/pkg.ci.collectd.org.list \
-    && gpg --keyserver hkp://pgp.mit.edu:80 --recv-keys 3994D24FB8543576 \
+    && gpg --keyserver hkp://ipv4.pool.sks-keyservers.net --no-tty --recv-keys 3994D24FB8543576 \
         && gpg --export -a 3994D24FB8543576 | apt-key add - \
     && apt-get update \
         && apt-get install -y --no-install-recommends \
